@@ -1,15 +1,6 @@
-#Width, height
-appSize = [800, 600]
-
-
+import vechtknop
 def setup():
-    # The size of the canvas
-    size(appSize[0], appSize[1])
-
-# def draw():
-
-
-# def keyPressed():
-
-
-# def keyReleased():
+    size(800,700)
+    background(0)
+def draw():
+    vechtknop.knop()         

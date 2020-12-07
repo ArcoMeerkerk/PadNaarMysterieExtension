@@ -1,5 +1,4 @@
-#Width, height
-import vechtknop
+from modules import vechtknop
 
 def setup():
     size(800, 600)

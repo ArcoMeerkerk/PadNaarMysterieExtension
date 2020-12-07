@@ -61,6 +61,7 @@ while True:
             if dice1 = 6:
                 print("6")
                 dice1 -= 6
+                hello
  """
    
    yelif ans=="n":

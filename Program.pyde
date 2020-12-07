@@ -1,6 +1,16 @@
-import vechtknop
+#Width, height
+appSize = [800, 600]
+import dice
+
 def setup():
-    size(800,700)
-    background(0)
+    # The size of the canvas
+    size(appSize[0], appSize[1])
+    # dice.setupFuctions()
+
 def draw():
-    vechtknop.knop()         
+    dice.showButton()
+
+# def keyPressed():
+
+
+# def keyReleased():

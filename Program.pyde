@@ -1,4 +1,4 @@
-import inputveld
+from modules import inputveld
 
 
 #Width, height

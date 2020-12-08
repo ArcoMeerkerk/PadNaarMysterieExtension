@@ -1,9 +1,10 @@
 from modules import audio
-from modules.views import splashScreen
+from modules.views import splashScreen, playerAmount
 add_library("sound")
 
 MouseScroll = 0
 IsShowingSplashScreen = True
+IsShowingPlayerAmount = False
 
 def setup():
     global Font, Sf1, Sf2
@@ -19,12 +20,17 @@ def setup():
     Sf1.play()
     
 def draw():
-    global MouseScroll, IsShowingSplashScreen
+    global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount
 
     background(255)
 
     if IsShowingSplashScreen :
         IsShowingSplashScreen = splashScreen.Show(Font)
+
+        if IsShowingSplashScreen == False :
+            IsShowingPlayerAmount = True
+    elif IsShowingPlayerAmount :
+        IsShowingPlayerAmount = playerAmount.Show(Font)
 
     audio.MouseEffect([Sf1, Sf2])
     audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)

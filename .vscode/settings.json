@@ -1,5 +1,5 @@
 {
-    "code-runner.customCommand": "java -jar processing-py.jar Program.pyde",
+    "code-runner.customCommand": "java -jar processing-py.jar PadNaarMysterieExtension.pyde",
     "python.linting.enabled": false,
     "files.associations": {
         "*.py": "python",
@@ -9,5 +9,6 @@
     "files.exclude": {
         "*.class": true,
         "processing-py.jar": true
-    }
+    },
+    "python.pythonPath": "C:\\Users\\jjma2\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }   

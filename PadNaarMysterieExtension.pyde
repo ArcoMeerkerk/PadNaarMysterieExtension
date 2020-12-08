@@ -1,32 +1,38 @@
-from modules import dice
+from modules import audio, splashScreen
+add_library("sound")
 
-from music import *
- 
-note = Note(443.1, HN)     # create a note a bit over A4 (440.0)
-Play.midi(note)            # and play it!
+MouseScroll = 0
+Start = True
 
-#Width, height
-appSize = [800, 600]
 def setup():
-    global font, f
-    # The size of the canvas
-    # smooth()
+    global Font, Sf1, Sf2
+    Sf1 = SoundFile(this, "./assets/audio/piano.wav")
+    Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
+    # Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
+    Font = loadFont("./assets/fonts/Algerian-64.vlw")
+    audio.SetVolume([Sf1, Sf2], [0.5, 0.5])
 
-    # The font must be located in the sketch's
-# "data" directory to load successfully
-    font = loadFont("./assets/fonts/AventineRegular-64.vlw")
-    textFont(font)
-    text("word", 10, 50)
-    size(appSize[0], appSize[1])
     background(255)
-    textSize(64)      
-    fill(0)                       
-    text("Hello Strings!",100,100)
-
+    size(800, 600)
+    
+    Sf1.play()
+    
 def draw():
-    global font, f
-    # dice.showButton()
-    # textFont (font, 16)
-# def keyPressed():
+    global MouseScroll, IsShowingSplashScreen
 
+    background(255)
+
+    if IsShowingSplashScreen :
+        IsShowingSplashScreen = splashScreen.Show(Font)
+
+    audio.MouseEffect([Sf1, Sf2])
+    audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
+
+    MouseScroll = 0
+
+# def keyPressed():
 # def keyReleased():
+
+def mouseWheel(event):
+    global MouseScroll
+    MouseScroll = event.getCount()

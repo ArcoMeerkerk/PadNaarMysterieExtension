@@ -1,8 +1,9 @@
-from modules import audio, splashScreen
+from modules import audio
+from modules.views import splashScreen
 add_library("sound")
 
 MouseScroll = 0
-Start = True
+IsShowingSplashScreen = True
 
 def setup():
     global Font, Sf1, Sf2

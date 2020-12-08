@@ -16,16 +16,15 @@ def eventbepaler():
     return str(EventKeuze)
 def setup():
     global backgroundPicture, backgroundPicture
-    # The size of the canvas
+    # The size of the canvas + foto inladen + tekst centreren
     backgroundPicture = loadImage("Bord-3.png")
     size(800,600)
     textAlign(CENTER,CENTER)
-    #backgroundPicture = loadShape('BordBackground.svg')
 def event():
     global Gamemode, EventKeuze, Eventrunner, backgroundPicture
     background(100)
-    #popupIMG = loadImage("EventWithText.png")
-    image(backgroundPicture, 150, 100, 500, 300)
+    #Afbeelding inladen
+    #image(backgroundPicture, 150, 100, 500, 300)
     textSize(26)
     #runt eventrunner 1 keer om te bepalen welke event er geprint wordt op de afbeelding
     if Eventrunner == True:

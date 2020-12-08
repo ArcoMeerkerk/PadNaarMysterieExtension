@@ -6,7 +6,7 @@ import random
 #backgroundPicture = loadImage("Bord-3.png")
 Gamemode = "Start"
 #json file inladen + Eventrunner
-myjsonfile = open('Evenementen.json', 'r')
+myjsonfile = open('../assets/json/Evenementen.json', 'r')
 jsondata = myjsonfile.read()
 Eventrunner = True
 obj = json.loads(jsondata)
@@ -17,7 +17,8 @@ def eventbepaler():
 def setup():
     global backgroundPicture, backgroundPicture
     # The size of the canvas + foto inladen + tekst centreren
-    backgroundPicture = loadImage("Bord-3.png")
+    # backgroundPicture = loadImage("Bord-3.png")
+    backgroundPicture = None
     size(800,600)
     textAlign(CENTER,CENTER)
 def event():

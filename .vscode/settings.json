@@ -10,5 +10,5 @@
         "*.class": true,
         "processing-py.jar": true
     },
-    "python.pythonPath": "C:\\Users\\jjma2\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+    "python.pythonPath": "C:\\Users\\jjma2\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe"
 }   

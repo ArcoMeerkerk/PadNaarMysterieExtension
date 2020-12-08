@@ -3,6 +3,6 @@ def setup():
     # The size of the canvas
     size(800, 600)
     # Zet Achtergrond zwart
-    background(0)
+    background(35)
 def draw():
     vechtModule.showVechtModule()                               

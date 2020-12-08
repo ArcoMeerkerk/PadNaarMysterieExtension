@@ -1,4 +1,5 @@
 from modules import audio
+from modules.vechtModules import vechtModule
 from modules.views import splashScreen, playerAmount
 add_library("sound")
 
@@ -17,23 +18,26 @@ def setup():
     background(255)
     size(800, 600)
     
-    Sf1.play()
+    # Sf1.play()
     
 def draw():
     global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount
 
-    background(255)
+    background(0)
 
-    if IsShowingSplashScreen :
-        IsShowingSplashScreen = splashScreen.Show(Font)
+    # Disabled main screen
+    # if IsShowingSplashScreen :
+    #     IsShowingSplashScreen = splashScreen.Show(Font)
 
-        if IsShowingSplashScreen == False :
-            IsShowingPlayerAmount = True
-    elif IsShowingPlayerAmount :
-        IsShowingPlayerAmount = playerAmount.Show(Font)
+    #     if IsShowingSplashScreen == False :
+    #         IsShowingPlayerAmount = True
+    # elif IsShowingPlayerAmount :
+    #     IsShowingPlayerAmount = playerAmount.Show(Font)
 
-    audio.MouseEffect([Sf1, Sf2])
-    audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
+    vechtModule.showVechtModule() 
+
+    # audio.MouseEffect([Sf1, Sf2])
+    # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
 
     MouseScroll = 0
 

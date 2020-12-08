@@ -9,6 +9,6 @@ def knop():
     text("VECHT", 400, 540)
     if mousePressed:
         if (mouseX > 300 and mouseX < (300 + 200) and mouseY > 500 and mouseY < (500 + 50)):
-            background(0)
+            background(35)
             return True
     return False

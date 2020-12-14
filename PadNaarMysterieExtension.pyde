@@ -5,7 +5,7 @@ add_library("sound")
 MouseScroll = 0
 IsShowingSplashScreen = True
 IsShowingPlayerAmount = False
-PlayerChoice
+
 #playerAmount.amountofPlayers aantal spelers
 
 def setup():

@@ -5,6 +5,8 @@ add_library("sound")
 MouseScroll = 0
 IsShowingSplashScreen = True
 IsShowingPlayerAmount = False
+PlayerChoice
+#playerAmount.amountofPlayers aantal spelers
 
 def setup():
     global Font, Sf1, Sf2
@@ -31,6 +33,11 @@ def draw():
             IsShowingPlayerAmount = True
     elif IsShowingPlayerAmount :
         IsShowingPlayerAmount = playerAmount.Show(Font)
+
+        if IsShowingPlayerAmount == False :
+            #change this for next screen
+            IsShowingSplashScreen = True
+            #Amount_Players= IsShowingPlayerAmount[1]
 
     audio.MouseEffect([Sf1, Sf2])
     audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)

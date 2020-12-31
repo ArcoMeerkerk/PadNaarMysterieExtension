@@ -5,8 +5,14 @@ gekozen = False
 # Color values voor de vierkanten waar de plaatjes zijn
 color = [123, 123, 123, 123, 123, 123]
 aantalKaraktersGekozen = 0    
+karakter1 = loadImage("./assets/images/karakters/Berserker-min.png")
+karakter2 = loadImage("./assets/images/karakters/Fighter-min.png")
+karakter3 = loadImage("./assets/images/karakters/Goblin-min.png")
+karakter4 = loadImage("./assets/images/karakters/Monk-min.png")
+karakter5 = loadImage("./assets/images/karakters/Sorcerer-min.png")
+karakter6 = loadImage("./assets/images/karakters/Turtle-min.png")
 def SelectieScherm():
-    global GekozenKarakters, i, speler, gekozen, color, aantalKaraktersGekozen    
+    global GekozenKarakters, i, speler, gekozen, color, aantalKaraktersGekozen, karakter1, karakter2, karakter3, karakter4, karakter5, karakter6
     # De Vierkanten waar de karakters op zitten
     rectMode(CENTER)
     fill(color[0])
@@ -22,22 +28,16 @@ def SelectieScherm():
     fill(color[5])
     rect(606, 343, 180, 180)
     # Plaatjes van de karakters
-    karakter1 = loadImage("./assets/images/karakters/Berserker.png")
     imageMode(CENTER)
     image(karakter1, 196, 135, 170, 170)
-    karakter2 = loadImage("./assets/images/karakters/Fighter.png")
     imageMode(CENTER)
     image(karakter2, 401, 135, 170, 170)
-    karakter3 = loadImage("./assets/images/karakters/Goblin.png")
     imageMode(CENTER)
     image(karakter3, 606, 135, 170, 170)
-    karakter4 = loadImage("./assets/images/karakters/Monk.png")
     imageMode(CENTER)
     image(karakter4, 196, 343, 170, 170)
-    karakter5 = loadImage("./assets/images/karakters/Sorcerer.png")
     imageMode(CENTER)
     image(karakter5, 400, 343, 170, 170)
-    karakter6 = loadImage("./assets/images/karakters/Turtle.png")
     imageMode(CENTER)
     image(karakter6, 606, 343, 170, 170)
     # Karakters selecteren 
@@ -106,16 +106,17 @@ def SelectieScherm():
             GekozenKarakters[speler] = i
             print(GekozenKarakters)
             speler = 1
-    # Achtergrond van Done knop
-    fill(255)
-    rectMode(CORNER)  
-    rect(550, 500, 200, 50)
-    # Done knop
-    fill(0)
-    textSize(32)
-    textAlign(CENTER)
-    text("Done", 600, 540)
-    if mousePressed:
-        if (gekozen == True) and (mouseX > 500 and mouseX < (500 + 200) and mouseY > 500 and mouseY < (500 + 50)):
-            noLoop()
-            background(35)
+    if speler == 1:
+        # Achtergrond van Done knop
+        fill(255)
+        rectMode(CORNER)  
+        rect(550, 500, 200, 50)
+        # Done knop
+        fill(0)
+        textSize(32)
+        textAlign(CENTER)
+        text("Done", 600, 540)
+        if mousePressed:
+            if (gekozen == True) and (mouseX > 500 and mouseX < (500 + 200) and mouseY > 500 and mouseY < (500 + 50)):
+                noLoop()
+                background(35)

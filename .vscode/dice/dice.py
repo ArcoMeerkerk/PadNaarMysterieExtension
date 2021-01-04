@@ -1,69 +1,101 @@
-""" import random
-
-numberList = [1,2,3,4,5,6]
-print("dice number is: ", random.choice(numberList)
-
-int(random.choice(numberList)) = n 
-n = number
-while n != 0:
-    if n == 1:
-        print("Number is 1")
-        n -= 1
-    if n == 2:
-        print("Number is 2")
-        n -= 2
-    if n == 3:
-        print("Number is 3")
-        n -= 3
-    if n == 4:
-        print("Number is 4")
-        n -= 4
-    if n == 5:
-        print("Number is 5")
-        n -= 5
-    if n == 6:
-        print("Number is 6")
-        n -= 6
-    else:
-        print("error") """
-    
-    
-
 import random
 
-while True:
+def Draw():
+    size(800,600)
+    background(255)
 
-   ans=input("do you want to roll the dice y/n ?").lower()
+def rollRightDice(): 
+    rolleddice = int(random(1, 7))
+    if rolleddice == 1:
+        fill(0)
+        global img1
+        img1 = loadImage("dice1.png")
+        imageMode(CENTER)
+    if rolleddice == 2:
+        fill(0)
+        global img2
+        img2 = loadImage("dice2.png")
+        imageMode(CENTER)
+    if rolleddice == 3:
+        fill(0)
+        global img3
+        img3 = loadImage("dice3.png")
+        imageMode(CENTER)
+    if rolleddice == 4:
+        fill(0)
+        global img4
+        img4 = loadImage("dice4.png")
+        imageMode(CENTER)
+    if rolleddice == 5:
+        fill(0)
+        global img5
+        img5 = loadImage("dice5.png")
+        imageMode(CENTER)
+    if rolleddice == 6:
+        fill(0)
+        global img6
+        img6 = loadImage("dice6.png")
+        imageMode(CENTER)
 
-   if ans=="y": 
-
-       dice1=random.randint(1,6)
-
-       print("your nummber is",dice1)
-
-        while dice1 != 0:
-        
-            """ if dice1 = 1:
-                print("1")
-                dice1 -= 1
-            if dice1 = 2:
-                print("2")
-                dice1 -= 2
-            if dice1 = 3:
-                print("3")
-                dice1 -= 3
-            if dice1 = 4:
-                print("4")
-                dice1 -= 4
-            if dice1 = 5:
-                print("5")
-                dice1 -= 5
-            if dice1 = 6:
-                print("6")
-                dice1 -= 6
-                hello
- """
-   
-   yelif ans=="n":
-
-       print("okay, have a nice day")    
+def rollLeftDice(): 
+    rolleddice = int(random(1, 13))
+    if rolleddice == 1:
+        fill(0)
+        global img1
+        img1 = loadImage("dice1.png")
+        imageMode(CENTER)
+    if rolleddice == 2:
+        fill(0)
+        global img2
+        img2 = loadImage("dice2.png")
+        imageMode(CENTER)
+    if rolleddice == 3:
+        fill(0)
+        global img3
+        img3 = loadImage("dice3.png")
+        imageMode(CENTER)
+    if rolleddice == 4:
+        fill(0)
+        global img4
+        img4 = loadImage("dice4.png")
+        imageMode(CENTER)
+    if rolleddice == 5:
+        fill(0)
+        global img5
+        img5 = loadImage("dice5.png")
+        imageMode(CENTER)
+    if rolleddice == 6:
+        fill(0)
+        global img6
+        img6 = loadImage("dice6.png")
+        imageMode(CENTER)
+    if rolleddice == 7:
+        fill(0)
+        global img1
+        img1 = loadImage("dice7.png")
+        imageMode(CENTER)
+    if rolleddice == 8:
+        fill(0)
+        global img2
+        img2 = loadImage("dice8.png")
+        imageMode(CENTER)
+    if rolleddice == 9:
+        fill(0)
+        global img3
+        img3 = loadImage("dice9.png")
+        imageMode(CENTER)
+    if rolleddice == 10:
+        fill(0)
+        global img4
+        img4 = loadImage("dice10.png")
+        imageMode(CENTER)
+    if rolleddice == 11:
+        fill(0)
+        global img5
+        img5 = loadImage("dice11.png")
+        imageMode(CENTER)
+    if rolleddice == 12:
+        fill(0)
+        global img6
+        img6 = loadImage("dice12.png")
+        imageMode(CENTER)

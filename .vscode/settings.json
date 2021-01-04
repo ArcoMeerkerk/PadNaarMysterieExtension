@@ -1,6 +1,6 @@
 {
     "code-runner.executorMap": {
-        "python": "cd $dir & java -jar C:\\Users\\joeyk\\Documents\\VSCode\\processing\\processing-py.jar $fileName",
+        "python": "cd $dir & java -jar C:\\Users\\joeyk\\Documents\\VSCode\\processing\\processing-py.jar dice.py",
         // "javascript": "node",
         // "php": "C:\\php\\php.exe",
         // "perl": "perl",

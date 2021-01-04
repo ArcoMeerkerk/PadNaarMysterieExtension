@@ -1,10 +1,10 @@
 {
-    "Event: 1": "Een plotselinge orkaan neemt plaats: Elke speler komt op de plek terrecht van de speler die na hem aan de beurt is",
-    "Event: 2": "De map begint vol te raken: Elke speler mag 1 tegel na keuze weg halen",
-    "Event: 3": "De wegen sluiten te goed aan: Elke speler mag 1 tegel draaien na keuze (Hoeft niet aan te sluiten)",
-    "Event: 4": "De spelers zijn te dicht in de buurt van de schatkist: Als beide of 1 van de schatkisten nog op de map liggen verplaats deze na de tegen overgestelde plek (X <--> Y)",
-    "Event: 5": "De god van oorlog is niet te vrede met het weinige aantal gevechten: Ga een gevecht aan met de speler dichtsbij je, verliezer gaat terug na zijn begin plek",
+    "Event: 1": "Een plotselinge orkaan neemt plaats: Elke speler komt op de plek terecht van de speler die na hem aan de beurt is.",
+    "Event: 2": "De map begint vol te raken: Elke speler mag 1 tegel na keuze weg halen.",
+    "Event: 3": "De wegen sluiten te goed aan: Elke speler mag 1 tegel draaien na keuze (Hoeft niet aan te sluiten).",
+    "Event: 4": "De spelers zijn te dicht in de buurt van de schatkist: Als beide of 1 van de schatkisten nog op de map liggen verplaats deze na de tegenovergestelde plek (X <--> Y).",
+    "Event: 5": "De god van oorlog is niet te vrede met het weinige aantal gevechten: Ga een gevecht aan met de dichtstbijzijnde speler, de verliezer gaat terug na zijn begin plek.",
     "Event: 6": "De god van chaos vind dat er te weinig gebeurt: Alle spelers met kisten en de kisten die op de map liggen, worden verzameld in het midden punt. Ga er op af!",
-    "Event: 7": "Er wordt te weinig gebruik gemaakt van de tunnels: de komende 3 rondes kost gebruiken van tunnels 0 acties",
-    "Event: 8": "De god van chaos vind dat er te weinig gebeurt: Alle spelers die kaarten hebben in hun inventory mogen deze overal op de map plaatsen na keuze (wegen hoeven niet aan te sluiten)"
+    "Event: 7": "Er wordt te weinig gebruik gemaakt van de tunnels: de komende 3 rondes kost gebruiken van tunnels 0 acties.",
+    "Event: 8": "De god van chaos vind dat er te weinig gebeurt: Alle spelers die kaarten hebben in hun inventaris mogen deze overal op de map plaatsen na keuze (wegen hoeven niet aan te sluiten)."
 }

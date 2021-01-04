@@ -1,71 +1,62 @@
-#Daan Enders 1018410
-# Width, height
 import json
 import random
-#import PIL
-Gamemode = "Start"
-#json file inladen + Eventrunner
 myjsonfile = open('../assets/json/Evenementen.json', 'r')
 jsondata = myjsonfile.read()
-Eventrunner = True
 obj = json.loads(jsondata)
-timer_for_event = 0
-event_time = 600
-timer_enabled = True
-random_event_time = 0
+EventEndTime = 600
+EventTimer = 0
+randomEventTimer = 0
+TimeTicker = True
+TextEvent = ''
+loadEventCheck = True
+ImagePlaceX, ImagePlaceY, ImageSizeX, ImageSizeY = 600, 60, 50, 50
+TextPlaceX, TextPlaceY, TextSizeX, TextSizeY = 150, 50, 500, 300
+
 def loadEvent():
+    global EventKeuze,loadEventCheck, TextEvent
     #kiest een random value/event uit Evenementen.json en return deze
-    EventKeuze = (random.choice(list(obj.values())))
+    EventKeuze = random.choice(list(obj.values()))
     return str(EventKeuze)
+
+def ShowEvent():
+    global EventKeuze, loadEventCheck, TimeTicker, EventTimer,TextEvent, backbutton, ImageSizeX, ImageSizeY, ImagePlaceX, ImagePlaceY, TextSizeX, TextSizeY, TextPlaceX, TextPlaceY
+    TimeTicker = False
+    textSize(26)
+    background(100)
+    if loadEventCheck == True:
+        textSize(26)
+        loadEventCheck = False
+        TextEvent = loadEvent()
+    image(backbutton, ImagePlaceX, ImagePlaceY, ImageSizeX, ImageSizeY)
+    text(TextEvent, TextPlaceX, TextPlaceY,TextSizeX,TextSizeY)
+
+    if mousePressed:
+        if(mouseX > ImagePlaceX and mouseX < (ImagePlaceX + ImageSizeX) and mouseY > ImagePlaceY and mouseY < (ImagePlaceY + ImageSizeY)):
+            background(0)
+            EventTimer = 0 + (randomEventTimer - EventEndTime)
+            loadEventCheck = True
+            TimeTicker = True
+
+def TimerForEvent():
+    global TimeTicker, randomEventTimer, EventEndTime, EventTimer,loadEventCheck, TextEvent, backbutton
+    print("Event timer", EventTimer)
+    print("RandomEventTimer", randomEventTimer)
+    if EventTimer == 0 or EventTimer >= EventEndTime:
+        EventTimer = 1
+        randomEventTimer = random.choice(range(EventEndTime))
+    if EventTimer < EventEndTime and TimeTicker == True:
+        EventTimer += 1
+    if EventTimer >= randomEventTimer:
+        ShowEvent()
+    else:
+        TimeTicker = True
 def setup():
-    global backgroundPicture, backgroundPicture
-    # The size of the canvas + foto inladen + tekst centreren
-    backgroundPicture = loadImage("../assets/images/Bord-0.png")
+    global backbutton
+    backbutton = loadImage('../assets/images/BackButton.png')
     size(800,600)
     textAlign(CENTER,CENTER)
-def ShowEvent():
-    global Gamemode, EventKeuze, Eventrunner, backgroundPicture
-    background(100)
-    #Afbeelding inladen
-    image(backgroundPicture, 150, 100, 500, 300)
-    textSize(26)
-    #runt eventrunner 1 keer om te bepalen welke event er geprint wordt op de afbeelding
-    if Eventrunner == True:
-        Eventrunner = False
-        EventKeuze = loadEvent()
-    text(EventKeuze , 150, 50,500,300)
-    if key == 'o':
-        background(0)
-        return True
-    else:
-        return False
-def timer():
-    global timer_for_event, random_event_time, timer_enabled
-    print("timer_for_event", timer_for_event)
-    print("random_event_time", random_event_time)
-    if timer_for_event == 0 or timer_for_event >= event_time:
-        timer_for_event = 1
-        random_event_time = random.choice(range(event_time))
-    elif timer_for_event < event_time and timer_enabled == True: 
-        timer_for_event += 1
-    if random_event_time >= timer_for_event:
-        timer_enabled = ShowEvent()
-    else:
-        timer_enabled = True
 
 def draw():
-    global Gamemode, Eventrunner, timer_for_event
-    if Gamemode == "Start":
-        background(0)
-        timer()
-        
-    
-
-# def draw():
-
-
-# def keyPressed():
-
-
-# def keyReleased(): 
-#C:\Users\dfend\OneDrive\Documents\GitHub\PadNaarMysterieExtension\PadNaarMysterieExtension\PadNaarMysterieExtension\EventFunctie\Event.pyde
+    global TimeTicker, randomEventTimer, EventEndTime, EventTimer, EventKeuze,loadEventCheck, TextEvent, backbutton
+    background(0)
+    TimerForEvent()

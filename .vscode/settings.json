@@ -1,6 +1,6 @@
 {
     "code-runner.executorMap": {
-        "python": "cd $dir & java -jar C:\\Users\\joeyk\\Documents\\processing-3.5.4\\processing-py\\processing-py.jar $fileName",
+        "python": "cd $dir & java -jar D:\\processing-3.5.4\\processing-3.5.4\\processing-py.jar $fileName",
         // "javascript": "node",
         // "php": "C:\\php\\php.exe",
         // "perl": "perl",
@@ -21,5 +21,5 @@
         "*.class": true,
         "processing-py.jar": true
     },
-    "python.pythonPath": "C:\\Users\\joeyk\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+    "python.pythonPath": "C:\\Users\\Joey-PC\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }

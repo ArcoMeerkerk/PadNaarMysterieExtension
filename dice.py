@@ -117,7 +117,7 @@ def RollButtons():
     rectMode(CORNER)
     rect(100, 500, 120, 120)
     global img6
-    img6 = loadImage('assets/images/dice6.png')
+    img6 = loadImage('../images/dice6.png')
     imageMode(CORNER)
     image(img6, 100, 500, 120, 120)
 

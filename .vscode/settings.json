@@ -1,6 +1,6 @@
 {
     "code-runner.executorMap": {
-        "python": "cd $dir & java -jar C:\\Users\\joeyk\\Documents\\Visual_Studio_Code\\processing\\processing-py.jar $fileName",
+        "python": "cd $dir & java -jar C:\\Users\\joeyk\\Documents\\VSCode\\processing\\processing-py.jar $fileName",
         // "javascript": "node",
         // "php": "C:\\php\\php.exe",
         // "perl": "perl",

@@ -1,22 +1,19 @@
 from modules import audio
-from modules.views import splashScreen, playerAmount, homescreen
+from modules.views import viewsModel, splashScreen, playerAmount, homescreen
 add_library("sound")
 
 MouseScroll = 0
 IsShowingSplashScreen = True
 IsShowingPlayerAmount = False
+IsShowingPlayerSelection = False
 IsShowingHomescreen = False
-nogvanvorigescherm = False
-
-#playerAmount.AmountofPlayers aantal spelers
+MainFont = loadFont("./assets/fonts/Algerian-64.vlw")
+ButtonFont = loadFont("./assets/fonts/ArialMT-32.vlw")
+# Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
+Sf1 = SoundFile(this, "./assets/audio/piano.wav")
+Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
 
 def setup():
-    global MainFont, TitleFont, Sf1, Sf2
-    Sf1 = SoundFile(this, "./assets/audio/piano.wav")
-    Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
-    # Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
-    MainFont = loadFont("./assets/fonts/Algerian-64.vlw")
-    TitleFont = loadFont("./assets/fonts/ArialMT-32.vlw")
     audio.SetVolume([Sf1, Sf2], [0.5, 0.5])
 
     background(255)
@@ -26,24 +23,10 @@ def setup():
     # Sf1.play()
     
 def draw():
-    global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount, IsShowingHomescreen
+    global MouseScroll
 
     background(255)
-
-    if IsShowingSplashScreen :
-        IsShowingSplashScreen = splashScreen.Show(MainFont, TitleFont)
-
-        if IsShowingSplashScreen == False :
-            IsShowingPlayerAmount = True
-            nogvanvorigescherm = True
-    elif IsShowingPlayerAmount :
-        IsShowingPlayerAmount = playerAmount.Show(MainFont, TitleFont)
-
-        if IsShowingPlayerAmount == False :
-            #change this for next screen
-            IsShowingHomescreen = True
-    elif IsShowingHomescreen :
-        homescreen.Show(MainFont)
+    viewsModel.Show(MainFont, ButtonFont)
 
     # audio.MouseEffect([Sf1, Sf2])
     # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)

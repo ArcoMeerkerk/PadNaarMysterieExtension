@@ -56,7 +56,7 @@ def ShowAmountButtons(buttonFont):
             mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
             AmountofPlayers = 6
             return False
-        else:
+        else :
             return True
-    else:
+    else :
         return True

@@ -7,3 +7,5 @@ def Show(font) :
     fill(0)
     textAlign(CENTER)               
     text("Homescreen", width//2, 150)
+
+    return True

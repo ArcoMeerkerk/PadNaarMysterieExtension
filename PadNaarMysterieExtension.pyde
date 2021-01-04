@@ -8,7 +8,7 @@ IsShowingPlayerAmount = False
 IsShowingHomescreen = False
 nogvanvorigescherm = False
 
-#playerAmount.amountofPlayers aantal spelers
+#playerAmount.AmountofPlayers aantal spelers
 
 def setup():
     global Font, Sf1, Sf2
@@ -20,8 +20,9 @@ def setup():
 
     background(255)
     size(800, 600)
+    frameRate(60)
     
-    Sf1.play()
+    # Sf1.play()
     
 def draw():
     global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount, IsShowingHomescreen
@@ -43,10 +44,8 @@ def draw():
     elif IsShowingHomescreen :
         homescreen.Show(Font)
 
-
-    #audio.MouseEffect([Sf1, Sf2])
-    audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
-
+    # audio.MouseEffect([Sf1, Sf2])
+    # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
     MouseScroll = 0
 
 # def keyPressed():

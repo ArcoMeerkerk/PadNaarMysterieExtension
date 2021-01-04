@@ -1,10 +1,12 @@
 from modules import audio
-from modules.views import splashScreen, playerAmount
+from modules.views import splashScreen, playerAmount, homescreen
 add_library("sound")
 
 MouseScroll = 0
 IsShowingSplashScreen = True
 IsShowingPlayerAmount = False
+IsShowingHomescreen = False
+nogvanvorigescherm = False
 
 #playerAmount.amountofPlayers aantal spelers
 
@@ -22,7 +24,7 @@ def setup():
     Sf1.play()
     
 def draw():
-    global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount
+    global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount, IsShowingHomescreen
 
     background(255)
 
@@ -31,15 +33,18 @@ def draw():
 
         if IsShowingSplashScreen == False :
             IsShowingPlayerAmount = True
+            nogvanvorigescherm = True
     elif IsShowingPlayerAmount :
         IsShowingPlayerAmount = playerAmount.Show(Font)
 
         if IsShowingPlayerAmount == False :
             #change this for next screen
-            IsShowingSplashScreen = True
-            #Amount_Players= IsShowingPlayerAmount[1]
+            IsShowingHomescreen = True
+    elif IsShowingHomescreen :
+        homescreen.Show(Font)
 
-    audio.MouseEffect([Sf1, Sf2])
+
+    #audio.MouseEffect([Sf1, Sf2])
     audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
 
     MouseScroll = 0

@@ -42,16 +42,16 @@ def ShowAmountButtons() :
         mouseX > width//4 - ButtonWidth//2 and mouseX < width//4 + ButtonWidth//2 and \
         mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
         amountofPlayers = 4
-        return False #[False, 4]
+        return False
      elif mousePressed and mouseButton == LEFT and \
         mouseX > width//2 - ButtonWidth//2 and mouseX < width//2 + ButtonWidth//2 and \
         mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
         amountofPlayers = 5
-        return False #[False, 5]
+        return False
      elif mousePressed and mouseButton == LEFT and \
         mouseX > 3*(width//4) - ButtonWidth//2 and mouseX < 3*(width//4) + ButtonWidth//2 and \
         mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
         amountofPlayers = 6
-        return False #[False, 6]               
+        return False             
      else :
         return True

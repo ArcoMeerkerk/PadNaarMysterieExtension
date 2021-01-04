@@ -4,25 +4,22 @@ ButtonWidth = 150
 AmountofPlayers = 0
 Timer = 0
 
-
-def Show(font):
+def Show(font, buttonFont):
     textFont(font)
     fill(0)
     textAlign(CENTER)
     text("Selecteer spelers", width//2, 150)
 
-    return ShowAmountButtons()
+    return ShowAmountButtons(buttonFont)
 
-
-def ShowAmountButtons():
+def ShowAmountButtons(buttonFont):
     global AmountofPlayers, Timer
-
     Timer += 1
 
     fill(0)
     rectMode(CENTER)
     rect(width//4, height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(createFont("Arial", True))
+    textFont(buttonFont)
     fill(255)
     textSize(32)
     text("4 Spelers", width//4, height-BottomMargin+10)
@@ -30,7 +27,7 @@ def ShowAmountButtons():
     fill(0)
     rectMode(CENTER)
     rect(width//2, height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(createFont("Arial", True))
+    textFont(buttonFont)
     fill(255)
     textSize(32)
     text("5 Spelers", width//2, height-BottomMargin+10)
@@ -38,7 +35,7 @@ def ShowAmountButtons():
     fill(0)
     rectMode(CENTER)
     rect(3*(width//4), height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(createFont("Arial", True))
+    textFont(buttonFont)
     fill(255)
     textSize(32)
     text("6 Spelers", 3*(width//4), height-BottomMargin+10)

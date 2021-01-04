@@ -117,3 +117,4 @@ def ButtonRightDice():
     fill(0)
     rectMode(CORNER)
     rect(600, 500, 120, 50)
+ghh

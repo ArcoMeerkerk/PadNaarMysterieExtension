@@ -1,5 +1,16 @@
 {
-    "code-runner.customCommand": "java -jar processing-py.jar main.py",
+    "code-runner.executorMap": {
+        "python": "cd $dir & java -jar C:\\Users\\joeyk\\Documents\\processing-3.5.4\\processing-py\\processing-py.jar $fileName",
+        // "javascript": "node",
+        // "php": "C:\\php\\php.exe",
+        // "perl": "perl",
+        // "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
+        // "go": "go run",
+        // "html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+        // "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        // "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    },
+    // "code-runner.defaultLanguage": "python",
     "python.linting.enabled": false,
     "files.associations": {
         "*.py": "python",
@@ -9,5 +20,6 @@
     "files.exclude": {
         "*.class": true,
         "processing-py.jar": true
-    }
+    },
+    "python.pythonPath": "C:\\Users\\joeyk\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }

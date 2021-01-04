@@ -39,8 +39,6 @@ def ShowEvent():
 
 def TimerForEvent():
     global TimeTicker, randomEventTimer, EventEndTime, EventTimer,loadEventCheck, TextEvent, backbutton
-    print("Event timer", EventTimer)
-    print("RandomEventTimer", randomEventTimer)
     if EventTimer == 0 or EventTimer >= EventEndTime:
         EventTimer = 1
         randomEventTimer = random.choice(range(EventEndTime))

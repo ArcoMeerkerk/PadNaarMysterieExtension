@@ -105,18 +105,8 @@ def SelectieScherm():
             print(i)
             GekozenKarakters[speler] = i
             print(GekozenKarakters)
-            speler = 1
-    if speler == 1:
-        # Achtergrond van Done knop
-        fill(255)
-        rectMode(CORNER)  
-        rect(550, 500, 200, 50)
-        # Done knop
-        fill(0)
-        textSize(32)
-        textAlign(CENTER)
-        text("Done", 600, 540)
-        if mousePressed:
-            if (gekozen == True) and (mouseX > 500 and mouseX < (500 + 200) and mouseY > 500 and mouseY < (500 + 50)):
-                noLoop()
-                background(35)
+            speler = 1  
+    
+    if GekozenKarakters[1] != GekozenKarakters[0] and speler == 1:
+        background(35)
+    

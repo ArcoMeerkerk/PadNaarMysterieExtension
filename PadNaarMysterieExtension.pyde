@@ -17,7 +17,7 @@ def setup():
 
     background(35)
     size(800, 600)
-    
+    frameRate(60)
     # Sf1.play()
     
 def draw():

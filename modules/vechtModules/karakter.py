@@ -11,10 +11,11 @@ karakter3 = loadImage("./assets/images/karakters/Goblin-min.png")
 karakter4 = loadImage("./assets/images/karakters/Monk-min.png")
 karakter5 = loadImage("./assets/images/karakters/Sorcerer-min.png")
 karakter6 = loadImage("./assets/images/karakters/Turtle-min.png")
+selectieAchtergrond = loadImage("./assets/images/achtergrondElementen/selectieAchtergrond.png")
 def SelectieScherm():
     global GekozenKarakters, i, speler, gekozen, color, aantalKaraktersGekozen, karakter1, karakter2, karakter3, karakter4, karakter5, karakter6
-    # De Vierkanten waar de karakters op zitten
-    rectMode(CENTER)
+    #De Vierkanten waar de karakters op zitten
+    rectMode(CENTER) 
     fill(color[0])
     rect(196, 135, 180, 180)
     fill(color[1])
@@ -22,7 +23,7 @@ def SelectieScherm():
     fill(color[2])
     rect(606, 135, 180, 180)
     fill(color[3])
-    rect(196, 343, 180, 180)
+    rect(196, 343, 180, 180)  
     fill(color[4])
     rect(400, 343, 180, 180)
     fill(color[5])

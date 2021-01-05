@@ -1,45 +1,45 @@
 from modules import audio
+from modules.views import viewsModel, splashScreen, playerAmount, homescreen
 from modules.vechtModules import vechtModule
-from modules.views import splashScreen, playerAmount
-# add_library("sound")
+add_library("sound")
 
-# MouseScroll = 0
-# IsShowingSplashScreen = True
-# IsShowingPlayerAmount = False
+MouseScroll = 0
+IsShowingSplashScreen = True
+IsShowingPlayerAmount = False
+IsShowingPlayerSelection = False
+IsShowingHomescreen = False
+MainFont = loadFont("./assets/fonts/Algerian-64.vlw")
+ButtonFont = loadFont("./assets/fonts/ArialMT-32.vlw")
+# Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
+Sf1 = SoundFile(this, "./assets/audio/piano.wav")
+Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
 
 def setup():
-    global Font, Sf1, Sf2
-    # Sf1 = SoundFile(this, "./assets/audio/piano.wav")
-    # Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
-    # Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
-    # Font = loadFont("./assets/fonts/Algerian-64.vlw") 
-    # audio.SetVolume([Sf1, Sf2], [0.5, 0.5])
-    background(35)
+    global BackButton, ViewData
+    audio.SetVolume([Sf1, Sf2], [0.5, 0.5])
+    BackButton = loadImage('./assets/images/BackButton.png')
+
+    background(255)
     size(800, 600)
-    frameRate(60)               
+    frameRate(60)
+
+    ViewData["VechtModule"] = vechtModule.Setup()
+
     # Sf1.play()
     
 def draw():
-    global MouseScroll, IsShowingSplashScreen, IsShowingPlayerAmount
-    # Disabled main screen
-    # if IsShowingSplashScreen :                
-    #     IsShowingSplashScreen = splashScreen.Show(Font)   
+    global MouseScroll
 
-    #     if IsShowingSplashScreen == False :
-    #         IsShowingPlayerAmount = True
-    # elif IsShowingPlayerAmount :
-    #     IsShowingPlayerAmount = playerAmount.Show(Font)         
-
-    vechtModule.showVechtModule()               
+    background(255)
+    viewsModel.Show(MainFont, ButtonFont, BackButton, ViewData)          
 
     # audio.MouseEffect([Sf1, Sf2])
     # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
-
-    # MouseScroll = 0
+    MouseScroll = 0
 
 # def keyPressed():
 # def keyReleased():
 
-# def mouseWheel(event):
-#     global MouseScroll
-#     MouseScroll = event.getCount()    
+def mouseWheel(event):
+    global MouseScroll
+    MouseScroll = event.getCount()

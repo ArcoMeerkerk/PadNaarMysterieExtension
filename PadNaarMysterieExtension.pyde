@@ -1,6 +1,5 @@
 from modules import audio
 from modules.views import viewsModel, splashScreen, playerAmount, homescreen
-from modules.vechtModules import vechtModule
 add_library("sound")
 
 MouseScroll = 0

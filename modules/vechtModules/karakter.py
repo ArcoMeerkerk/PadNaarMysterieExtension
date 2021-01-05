@@ -4,28 +4,17 @@ speler = 0
 gekozen = False
 # Color values voor de vierkanten waar de plaatjes zijn
 color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
-aantalKaraktersGekozen = 0   
-# Alle plaatjes 
-# Data["karakter1"] = loadImage("./assets/images/karakters/Berserker-min.png")
-# Data["karakter2"] = loadImage("./assets/images/karakters/Fighter-min.png")
-# Data["karakter3"] = loadImage("./assets/images/karakters/Goblin-min.png")
-# Data["karakter4"] = loadImage("./assets/images/karakters/Monk-min.png")
-# Data["karakter5"] = loadImage("./assets/images/karakters/Sorcerer-min.png")
-# Data["karakter6"] = loadImage("./assets/images/karakters/Turtle-min.png")
-# Data["karakterSpelerInfo"] = loadImage("./assets/images/achtergrondElementen/karakterInfo.png")
-# Data["selectieAchtergrond"] = loadImage("./assets/images/achtergrondElementen/Data["selectieAchtergrond"].png")
-# Data["houtenAchtergrond"] = loadImage("./assets/images/achtergrondElementen/Data["houtenAchtergrond"].jpg")
-# Data["geselecteerdeKarakterSpeler1"] = loadImage('/assets/images/achtergrondElementen/vraagteken.png')
-# Data["geselecteerdeKarakterSpeler2"] = loadImage('/assets/images/achtergrondElementen/vraagteken.png')
+
 rassen = ["Mens", "Goblin", "Tiefling", "Kestudo", "Titaran"]
 rasKarakter1 = ""
 rasKarakter2 = ""
 rollen = ["Monk", "Tovenaar", "Barbaar", "Vechter", "Schurk"]
 rolKarakter1 = ""
 rolKarakter2 = ""
+
 def SelectieScherm():
-    # global GekozenKarakters, i, speler, gekozen, color, aantalKaraktersGekozen, Data["geselecteerdeKarakterSpeler1"], Data["geselecteerdeKarakterSpeler2"], rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2
-    global GekozenKarakters, i, speler, gekozen, color, aantalKaraktersGekozen, rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2, Data
+    background(35)
+    global GekozenKarakters, i, speler, gekozen, color, rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2, Data
     #De plaatjes waar de karakters op zitten
     imageMode(CENTER)
     image(Data["selectieAchtergrond"], 220, 88, 150, 150)
@@ -177,15 +166,17 @@ def SelectieScherm():
     if mousePressed:
         if (gekozen == True) and (mouseX > 300 and mouseX < (300 + 200) and mouseY > 548 and mouseY < (548 + 35)):
             background(35)
-            print(i)
             GekozenKarakters[speler] = i
             print(GekozenKarakters)
             speler = 1
             color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"] 
     
-    if GekozenKarakters[1] != GekozenKarakters[0] and speler == 1:
-        background(35)
+    if GekozenKarakters[0] != 0 and GekozenKarakters[1] != 0 and speler == 1 \
+        and GekozenKarakters[0] != GekozenKarakters[1] :
+        return False
+    return True
 
 def Setup(data):
+    # Alle plaatjes
     global Data
-    data = Data
+    Data = data

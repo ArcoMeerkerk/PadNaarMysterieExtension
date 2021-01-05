@@ -12,9 +12,18 @@ rollen = ["Monk", "Tovenaar", "Barbaar", "Vechter", "Schurk"]
 rolKarakter1 = ""
 rolKarakter2 = ""
 
+IsFirst = True
+
 def SelectieScherm():
     background(35)
-    global GekozenKarakters, i, speler, gekozen, color, rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2, Data
+    global GekozenKarakters, i, speler, gekozen, color, rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2, Data, IsFirst
+    if IsFirst:
+        IsFirst = False
+        GekozenKarakters = [0, 0]
+        i = speler = 0
+        gekozen = False
+        rasKarakter1 = rasKarakter2 = rolKarakter1 = rolKarakter2 = ""
+
     #De plaatjes waar de karakters op zitten
     imageMode(CENTER)
     image(Data["selectieAchtergrond"], 220, 88, 150, 150)
@@ -165,7 +174,6 @@ def SelectieScherm():
     text("Select", 400, 576)
     if mousePressed:
         if (gekozen == True) and (mouseX > 300 and mouseX < (300 + 200) and mouseY > 548 and mouseY < (548 + 35)):
-            background(35)
             GekozenKarakters[speler] = i
             print(GekozenKarakters)
             speler = 1
@@ -173,6 +181,7 @@ def SelectieScherm():
     
     if GekozenKarakters[0] != 0 and GekozenKarakters[1] != 0 and speler == 1 \
         and GekozenKarakters[0] != GekozenKarakters[1] :
+        IsFirst = True
         return False
     return True
 

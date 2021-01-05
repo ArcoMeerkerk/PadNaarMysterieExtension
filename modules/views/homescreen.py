@@ -1,27 +1,27 @@
 BottomMargin = 75
 ButtonHeight = 50
 ButtonWidth = 300
-Timer = 0
 
-def Show(font) :
-    global Timer
-    Timer += 1
+def Show(font, buttonFont) :
     textFont(font)
     fill(0)
     textAlign(CENTER)               
     text("Homescreen", width//2, 150)
+    
+    return ShowVechtButton(buttonFont)
 
-    # Rechthoek
-    fill(255)
-    rectMode(CENTER)
-    rect(300, 500, 200, 50)
-    # Vecht
+def ShowVechtButton(buttonFont) :
     fill(0)
+    rectMode(CENTER)
+    rect(width//2, height-BottomMargin, ButtonWidth, ButtonHeight)
+    textFont(buttonFont)
+    fill(255)
     textSize(32)
-    textAlign(CENTER)
-    text("VECHT", 400, 540)
-    if mousePressed and Timer > 30:
-        if (mouseX > 300 and mouseX < (300 + 200) and mouseY > 500 and mouseY < (500 + 50)):
-            Timer = 0
-            return False
-    return True
+    text("VECHT", width//2, height-BottomMargin+10)
+
+    if mousePressed and mouseButton == LEFT and \
+        mouseX > width//2 - ButtonWidth//2 and mouseX < width//2 + ButtonWidth//2 and \
+        mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
+        return False
+    else :
+        return True

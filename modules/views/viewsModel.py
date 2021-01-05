@@ -28,7 +28,7 @@ def Show(mainFont, buttonFont, backButton) :
         if PlayerAmount.IsShowing == False :
             HomeScreen.IsShowing = True
     elif HomeScreen.IsShowing :
-        HomeScreen.Show(mainFont)
+        HomeScreen.Show(mainFont, buttonFont)
         event.TimerForEvent(backButton)
         if HomeScreen.IsShowing == False :
             VechtModule.IsShowing = True

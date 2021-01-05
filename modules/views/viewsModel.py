@@ -1,4 +1,4 @@
-from modules.views import splashScreen, playerAmount, playerSelection, homescreen
+from modules.views import splashScreen, playerAmount, playerSelection, homescreen, event
 
 class Screen:
     def __init__(self, showFunction, isShowing):
@@ -14,7 +14,7 @@ PlayerAmount = Screen(playerAmount.Show, False)
 PlayerSelection = Screen(playerSelection.Show, False)
 HomeScreen = Screen(homescreen.Show, False)
 
-def Show(mainFont, buttonFont) :
+def Show(mainFont, buttonFont, backButton) :
     # PlayerSelection.Show(mainFont, titleFont)
 
     if SplashScreen.IsShowing :
@@ -25,5 +25,8 @@ def Show(mainFont, buttonFont) :
         PlayerAmount.Show(mainFont, buttonFont)
         if PlayerAmount.IsShowing == False :
             HomeScreen.IsShowing = True
+            # event.setup()
 
-    HomeScreen.Show(mainFont)
+    if HomeScreen.IsShowing :
+        HomeScreen.Show(mainFont)
+        event.TimerForEvent(backButton)

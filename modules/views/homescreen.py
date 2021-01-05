@@ -1,3 +1,5 @@
+from modules.views import
+
 BottomMargin = 75
 ButtonHeight = 50
 ButtonWidth = 300
@@ -7,5 +9,6 @@ def Show(font) :
     fill(0)
     textAlign(CENTER)               
     text("Homescreen", width//2, 150)
+
 
     return True

@@ -1,6 +1,4 @@
 GekozenKarakters = []
-i = 0
-speler = 0
 gekozen1 = gekozen2 = gekozen3 = gekozen4 = gekozen5 = gekozen6 = False
 # Color values voor de vierkanten waar de plaatjes zijn
 color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
@@ -20,9 +18,9 @@ def setup():
 def draw():
     SelectieScherm()
 def SelectieScherm():
-    global GekozenKarakters, i, speler, gekozen, color, aantalKaraktersGekozen, karakter1, karakter2, karakter3, \
+    global GekozenKarakters, color, aantalKaraktersGekozen, karakter1, karakter2, karakter3, \
     karakter4, karakter5, karakter6, gekozen1, gekozen2, gekozen3, gekozen4, gekozen5, gekozen6
-    #poep
+    #Achtergrond voor de karakter selectie knoppen
     # imageMode(CENTER)
     # image(selectieAchtergrond, 200, 108, 170, 170)
     # imageMode(CENTER)
@@ -103,17 +101,19 @@ def SelectieScherm():
                     aantalKaraktersGekozen += 1
                     gekozen6 = True
             print(GekozenKarakters)
+    # Reset Knop vakje en text
     fill(255)   
     rectMode(CORNER)  
     rect(505, 505, 188, 42)
-    # Select knop
     fill(0)
     textSize(29)
     textAlign(CENTER, CENTER)
     text("Reset", 597, 525)
+    # Uileg text
     textSize(32)
     fill(255)
     text("Kies " + str(AmountofPlayers) + " karakters", 398, 449)
+    # Reset knop dat alle selecties reset
     if mousePressed:
         if (mouseX > 505 and mouseX < (505 + 188) and mouseY > 505 and mouseY < (505 + 42)):
             color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
@@ -121,12 +121,11 @@ def SelectieScherm():
             GekozenKarakters = []
             aantalKaraktersGekozen = 0
             background(37)
+    #Accepteer knop
     if aantalKaraktersGekozen == AmountofPlayers:
-        # Achtergrond van select knop
         fill(255)   
         rectMode(CORNER)  
         rect(105, 505, 188, 42)
-        # Select knop
         fill(0)
         textSize(29)
         textAlign(CENTER, CENTER)

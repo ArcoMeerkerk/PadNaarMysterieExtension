@@ -31,6 +31,7 @@ def draw():
     gevechtScherm()
 def gevechtScherm():
     global Data, isErEenWinnaar, score1, score2, IsFirst, sizeKarakter1, xKarakter1, yKarakter1, sizeKarakter1, xKarakter2, yKarakter2, sizeKarakter2
+    # Reset wanneer de programma opnieuwe word gebruikt
     if IsFirst:
         IsFirst = False
         sizeKarakter1 = 0
@@ -42,6 +43,7 @@ def gevechtScherm():
         score1 = 0
         score2 = 0
         isErEenWinnaar = False
+    # Kijkt welke plaatjes van de karakters op welke plek moet komen en hoe groot het moet zijn
     if isErEenWinnaar == False:
         # Speler1 = GekozenKarakters[0]
         # Speler2 = GekozenKarakters[1]
@@ -102,6 +104,7 @@ def gevechtScherm():
         # imgageMode(CENTER)
         # image(plaatjes[Speler1], xKarakter1, yKarakter1, sizeKarakter1, sizeKarakter1)
         # image(plaatjes[Speler2], xKarakter2, yKarakter2, sizeKarakter2, sizeKarakter2)
+        # Al het text dat op de scherm komt te staan
         textSize(32)
         textAlign(CENTER, CENTER)
         text("Klik zo snel mogelijk op\nhet knopje dat boven je karakter staat\n25 keer", 406, 76)
@@ -111,8 +114,9 @@ def gevechtScherm():
         text("Score: " + str(score2), 544, 172)
         text('Knop: Q', 73, 217)
         text('Knop: P', 547, 217)
-        text('Speler 1', 68, 582)
+        text('Speler 1', 68, 582) 
         text('Speler 2', 546, 582) 
+    # Victory scherm
     if isErEenWinnaar == True:
         background(37)
         textAlign(CENTER)
@@ -126,9 +130,9 @@ def gevechtScherm():
             textSize(55)
             text('Speler 2 heeft gewonnen', 402, 284)
         fill('#808080')
+        # Terug knop
         rectMode(CORNER)  
         rect(298, 419, 206, 55)
-        # Select knop
         fill(255)
         textSize(16)
         textAlign(CENTER)
@@ -138,7 +142,7 @@ def gevechtScherm():
                 background(37)
                 IsFirst = True
                 isErEenWinnaar = False
-                
+# Detecteerd welke knoppen word in gedrukt en geeft een punt voor elke dat een knop wordt ingedrutk
 def keyReleased():
     global score1, score2, isErEenWinnaar
     if isErEenWinnaar == False:

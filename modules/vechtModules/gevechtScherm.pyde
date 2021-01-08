@@ -8,8 +8,6 @@ yKarakter2 = 0
 score1 = 0
 score2 = 0
 gekozenKarakters = [6, 6]
-# scoreText1 = "Score: " + score1
-# scoreText2 = "Score: " + score2
 isErEenWinnaar = False
 IsFirst = True
 def setup():

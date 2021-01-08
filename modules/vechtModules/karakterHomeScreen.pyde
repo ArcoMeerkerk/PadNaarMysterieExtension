@@ -9,7 +9,7 @@ color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
 # karakter5 = loadImage("./assets/images/karakters/Sorcerer-min.png")
 # karakter6 = loadImage("./assets/images/karakters/Turtle-min.png")
 # selectieAchtergrond = loadImage("./assets/images/achtergrondElementen/selectieAchtergrond.png")
-AmountofPlayers = 4
+AmountofPlayers = 5
 aantalKaraktersGekozen = 0    
 def setup():
     background(37)

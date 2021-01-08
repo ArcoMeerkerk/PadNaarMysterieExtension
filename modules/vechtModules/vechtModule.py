@@ -17,3 +17,4 @@ def Setup():
     data["geselecteerdeKarakterSpeler1"] = loadImage('/assets/images/achtergrondElementen/vraagteken.png')
     data["geselecteerdeKarakterSpeler2"] = loadImage('/assets/images/achtergrondElementen/vraagteken.png')
     karakter.Setup(data)
+    gevechtScher.Setup(data)

@@ -55,7 +55,7 @@ def SelectieScherm():
     image(karakter5, 400, 313, 140, 140)
     imageMode(CENTER)
     image(karakter6, 600, 313, 140, 140)
-    # Karakters selecteren 
+    # Karakters selecteren
     if mousePressed:
         if (mouseX > 127.5 and mouseX < (127.5 + 145) and mouseY > 42.5 and mouseY < (42.5 + 145)):
             i = 1

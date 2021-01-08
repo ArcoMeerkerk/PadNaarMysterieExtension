@@ -1,6 +1,6 @@
 from modules import audio
 from modules.views import viewsModel, splashScreen, playerAmount, homescreen
-from modules.vechtModules import vechtModule
+from java.awt.event import KeyEvent
 add_library("sound")
 
 MouseScroll = 0
@@ -13,6 +13,7 @@ ButtonFont = loadFont("./assets/fonts/ArialMT-32.vlw")
 # Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
 Sf1 = SoundFile(this, "./assets/audio/piano.wav")
 Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
+KeyInfo = {}
 
 def setup():
     global BackButton
@@ -22,23 +23,34 @@ def setup():
     background(255)
     size(800, 600)
     frameRate(60)
-
-    vechtModule.Setup()
      
     # Sf1.play()
     
 def draw():
-    global MouseScroll
-
+    global KeyInfo, MouseScroll
     background(255)
-    viewsModel.Show(MainFont, ButtonFont, BackButton)          
+    viewsModel.Show(KeyInfo, MainFont, ButtonFont, BackButton)          
 
     # audio.MouseEffect([Sf1, Sf2])
     # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
     MouseScroll = 0
+    KeyInfo["KeyReleased"] = False
+
+def keyReleased(event) :
+    global KeyInfo
+    KeyInfo["KeyReleased"] = True
+
+    KeyInfo["KeyLocation"] = []
+    if event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT and event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT :
+        KeyInfo["KeyLocation"].append("right")
+        KeyInfo["KeyLocation"].append("left")
+    if event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT :
+        KeyInfo["KeyLocation"].append("right")
+    if event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT :
+        KeyInfo["KeyLocation"].append("left")
+    print(KeyInfo)
 
 # def keyPressed():
-# def keyReleased():
 
 def mouseWheel(event):
     global MouseScroll

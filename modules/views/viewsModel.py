@@ -1,5 +1,5 @@
 from modules.views import splashScreen, playerAmount, playerSelection, homescreen, event
-from modules.vechtModules import vechtModule
+from modules.vechtModules import karakterSelection, fight, fightResult
 
 class Screen:
     def __init__(self, showFunction, isShowing):
@@ -14,11 +14,11 @@ SplashScreen = Screen(splashScreen.Show, True)
 PlayerAmount = Screen(playerAmount.Show, False)
 PlayerSelection = Screen(playerSelection.Show, False)
 HomeScreen = Screen(homescreen.Show, False)
-VechtModule = Screen(vechtModule.Show, False)
+KarakterSelection = Screen(karakterSelection.Show, False)
+Fight = Screen(fight.Show, False)
+FightResult = Screen(fightResult.Show, False)
 
-def Show(mainFont, buttonFont, backButton) :
-    # PlayerSelection.Show(mainFont, titleFont)
-
+def Show(keyInfo, mainFont, buttonFont, backButton) :
     if SplashScreen.IsShowing :
         SplashScreen.Show(mainFont, buttonFont)
         if SplashScreen.IsShowing == False :
@@ -26,13 +26,31 @@ def Show(mainFont, buttonFont, backButton) :
     elif PlayerAmount.IsShowing :
         PlayerAmount.Show(mainFont, buttonFont)
         if PlayerAmount.IsShowing == False :
+            PlayerSelection.IsShowing = True
+            playerSelection.Setup(playerAmount.AmountofPlayers)
+    elif PlayerSelection.IsShowing :
+        PlayerSelection.Show()
+        if PlayerSelection.IsShowing == False:
             HomeScreen.IsShowing = True
     elif HomeScreen.IsShowing :
         HomeScreen.Show(mainFont, buttonFont)
         event.TimerForEvent(backButton)
         if HomeScreen.IsShowing == False :
-            VechtModule.IsShowing = True
-    elif VechtModule.IsShowing :
-        VechtModule.Show()
-        if VechtModule.IsShowing == False :
+            KarakterSelection.IsShowing = True
+            karakterSelection.Setup()
+    elif KarakterSelection.IsShowing :  
+        KarakterSelection.Show()
+        if KarakterSelection.IsShowing == False :
+            Fight.IsShowing = True
+            fight.Setup(karakterSelection.GekozenKarakters)
+    elif Fight.IsShowing == True :
+        Fight.Show(keyInfo)
+        if Fight.IsShowing == False:
+            FightResult.IsShowing = True
+    elif FightResult.IsShowing == True:
+        FightResult.Show(fight.victoryPlayer)
+        if FightResult.IsShowing == False:
             HomeScreen.IsShowing = True
+    
+
+

@@ -23,6 +23,7 @@ def LoadEvent():
 def Show(backButton):
     global EventKeuze, LoadEventCheck, TimeTicker, EventTimer,TextEvent, ImageSizeX, ImageSizeY, ImagePlaceX, ImagePlaceY, TextSizeX, TextSizeY, TextPlaceX, TextPlaceY
     TimeTicker = False
+    imageMode(CORNER)
     textAlign(CENTER, CENTER)
     textSize(26)
     noStroke()

@@ -14,6 +14,7 @@ def setup():
     background(37)
     size(800, 600)
     frameRate(60)
+def Setup():
     # achtergrond = loadImage("./assets/images/achtergrondElementen/vs_achtergrond.png")
     # spark = loadImage("./assets/images/achtergrondElementen/spark.gif")
     # plaatjes = list(

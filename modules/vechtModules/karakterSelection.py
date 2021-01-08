@@ -11,10 +11,10 @@ rasKarakter2 = ""
 rollen = ["Monk", "Tovenaar", "Barbaar", "Vechter", "Schurk"]
 rolKarakter1 = ""
 rolKarakter2 = ""
-
 IsFirst = True
+Data = {}
 
-def SelectieScherm():
+def Show():
     background(35)
     global GekozenKarakters, i, speler, gekozen, color, rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2, Data, IsFirst
     if IsFirst:
@@ -182,10 +182,23 @@ def SelectieScherm():
     if GekozenKarakters[0] != 0 and GekozenKarakters[1] != 0 and speler == 1 \
         and GekozenKarakters[0] != GekozenKarakters[1] :
         IsFirst = True
+        Data["geselecteerdeKarakterSpeler1"] = Data['vraagteken']
+        Data["geselecteerdeKarakterSpeler2"] = Data['vraagteken']
         return False
     return True
 
-def Setup(data):
+def Setup():
     # Alle plaatjes
     global Data
-    Data = data
+    Data["karakter1"] = loadImage("./assets/images/karakters/Berserker-min.png")
+    Data["karakter2"] = loadImage("./assets/images/karakters/Fighter-min.png")
+    Data["karakter3"] = loadImage("./assets/images/karakters/Goblin-min.png")
+    Data["karakter4"] = loadImage("./assets/images/karakters/Monk-min.png")
+    Data["karakter5"] = loadImage("./assets/images/karakters/Sorcerer-min.png")
+    Data["karakter6"] = loadImage("./assets/images/karakters/Turtle-min.png")
+    Data["karakterSpelerInfo"] = loadImage("./assets/images/achtergrondElementen/karakterInfo.png")
+    Data["selectieAchtergrond"] = loadImage("./assets/images/achtergrondElementen/selectieAchtergrond.png")
+    Data["houtenAchtergrond"] = loadImage("./assets/images/achtergrondElementen/houtenAchtergrond.jpg")
+    Data["vraagteken"] = loadImage('/assets/images/achtergrondElementen/vraagteken.png')
+    Data["geselecteerdeKarakterSpeler1"] = Data['vraagteken']
+    Data["geselecteerdeKarakterSpeler2"] = Data['vraagteken']

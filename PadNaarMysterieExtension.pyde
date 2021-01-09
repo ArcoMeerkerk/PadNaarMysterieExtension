@@ -24,6 +24,7 @@ def setup():
     frameRate(60)
 
     vechtModule.Setup()
+    homescreen.Setup()
 
     # Sf1.play()
     

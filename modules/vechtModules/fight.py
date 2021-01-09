@@ -112,7 +112,6 @@ def Show(keyInfo):
             isErEenWinnaar = False
             sizeKarakter1 = 0
             sizeKarakter2 = 0
-            xKarakter1 = 0
             yKarakter1 = 0
             xKarakter2 = 0
             yKarakter2 = 0
@@ -124,13 +123,13 @@ def Show(keyInfo):
 # Detecteerd welke knoppen word in gedrukt en geeft een punt voor elke dat een knop wordt ingedrutk
 def handleKeypress(keyInfo):
     global score1, score2, isErEenWinnaar
-    if isErEenWinnaar == False and keyInfo["KeyReleased"] and keyCode == SHIFT:
-        if "left" in keyInfo["KeyLocation"] :
+    if isErEenWinnaar == False and keyInfo["KeyReleased"]:
+        if key == 'q' or key == 'Q':
             score1 += 1
+            background(37)
             image(spark, 218, 125, 50, 63)
-            background(37)
-        if "right" in keyInfo["KeyLocation"]:
+        if key == 'p' or key == 'P':
             score2 += 1
-            image(spark, 688, 125, 50, 63)
             background(37)
+            image(spark, 688, 125, 50, 63)
 

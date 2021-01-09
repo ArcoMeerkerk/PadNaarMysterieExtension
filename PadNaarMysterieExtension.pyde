@@ -1,6 +1,5 @@
 from modules import audio
 from modules.views import viewsModel, splashScreen, playerAmount, homescreen
-from java.awt.event import KeyEvent
 add_library("sound")
 
 MouseScroll = 0
@@ -35,23 +34,13 @@ def draw():
     # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
     MouseScroll = 0
     KeyInfo["KeyReleased"] = False
-
+    
 def keyReleased(event) :
     global KeyInfo
     KeyInfo["KeyReleased"] = True
 
-    KeyInfo["KeyLocation"] = []
-    if event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT and event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT :
-        KeyInfo["KeyLocation"].append("right")
-        KeyInfo["KeyLocation"].append("left")
-    if event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_RIGHT :
-        KeyInfo["KeyLocation"].append("right")
-    if event.getNative().getKeyLocation() == KeyEvent.KEY_LOCATION_LEFT :
-        KeyInfo["KeyLocation"].append("left")
-    print(KeyInfo)
+    
 
-# def keyPressed():
-
-def mouseWheel(event):
-    global MouseScroll
-    MouseScroll = event.getCount()
+# def mouseWheel(event):
+#     global MouseScroll
+#     MouseScroll = event.getCount()

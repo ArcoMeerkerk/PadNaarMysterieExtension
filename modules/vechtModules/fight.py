@@ -29,7 +29,6 @@ def Setup(gekozenKarakters):
         loadImage("./assets/images/karakters/TurtleFullshot.png")
     ]
     spark = [
-        loadImage('./assets/Gifs/Sparks/blank.png'),
         loadImage('./assets/Gifs/Sparks/sparkFrame0.gif'),
         loadImage('./assets/Gifs/Sparks/sparkFrame1.gif'),
         loadImage('./assets/Gifs/Sparks/sparkFrame2.gif'),
@@ -46,19 +45,19 @@ def Show(keyInfo):
         imageMode(CORNER)
         image(achtergrond, 0, 0)
         if clicked1 == True:
-            if frameCount % 5 == 0 and frameCounter1 < 5:
+            if frameCount % 5 == 0 and frameCounter1 < 4:
                 frameCounter1 += 1
-            if frameCounter1 == 5:
+            if frameCounter1 == 4:
                 frameCounter1 = 0
                 clicked1 = False
-        image(spark[frameCounter1], 200, 115, 82, 82)
+            image(spark[frameCounter1], 200, 115, 82, 82)
         if clicked2 == True:
             if frameCount % 5 == 0 and frameCounter2 < 5:
                 frameCounter2 += 1
             if frameCounter2 == 5:
                 frameCounter2 = 0
                 clicked2 = False
-        image(spark[frameCounter2], 668, 115, 82, 82)
+            image(spark[frameCounter2], 668, 115, 82, 82)
         if score1 == scoreLimit or score2 == scoreLimit:
             isErEenWinnaar = True
         if gekozenKarakters[0] == 1:

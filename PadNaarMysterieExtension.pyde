@@ -15,21 +15,20 @@ KeyInfo = {}
 SoundFiles = {}
 KlikGeluid = SoundFile(this, "./assets/audio/selectionClickSound.wav")
 def setup():
-    global BackButton, Sf2, spark
-    # audio.SetVolume([Sf2], [0.5, 0.5])
+    global BackButton, Sf2, spark, KlikGeluid
+    audio.SetVolume([KlikGeluid], [0.5])
     # SoundFiles['naam'] = SoundFile(this, "./assets/audio/------.wav")
     BackButton = loadImage('./assets/images/BackButton.png')
     background(255)
     size(800, 600)
     frameRate(60)
-    # Sf2.play()
     
 def draw():
-    global KeyInfo, MouseScroll, SoundFiles, spark
+    global KeyInfo, MouseScroll, SoundFiles, spark, KlikGeluid
     background(255)
     viewsModel.Show(KeyInfo, SoundFiles, MainFont, ButtonFont, BackButton)          
     # audio.MouseEffect([Sf1, Sf2])
-    # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)
+    audio.SetVolumeMouseScroll([KlikGeluid], MouseScroll)
     MouseScroll = 0
     KeyInfo["KeyReleased"] = False
 
@@ -40,6 +39,6 @@ def mouseReleased():
     KlikGeluid.play()
 
 
-# def mouseWheel(event):
-#     global MouseScroll
-#     MouseScroll = event.getCount()
+def mouseWheel(event):
+    global MouseScroll
+    MouseScroll = event.getCount()

@@ -11,12 +11,15 @@ gekozenKarakters = [6, 6]
 isErEenWinnaar = False
 scoreLimit = 25
 victoryPlayer = 0
+frameCounter1 = 0
+frameCounter2 = 0
+clicked1 = False
+clicked2 = False
 def Setup(gekozenKarakters):
     global plaatjes, achtergrond, spark, Speler1, Speler2
     Speler1 = gekozenKarakters[0]
     Speler2 = gekozenKarakters[1]
     achtergrond = loadImage("./assets/images/achtergrondElementen/vs_achtergrond.png")
-    spark = loadImage("./assets/images/achtergrondElementen/spark.gif")
     plaatjes = [
         loadImage("./assets/images/karakters/BerserkerFullshot.png"),
         loadImage("./assets/images/karakters/FighterFullshot.png"),
@@ -25,17 +28,37 @@ def Setup(gekozenKarakters):
         loadImage("./assets/images/karakters/SorcererFullshot.png"),
         loadImage("./assets/images/karakters/TurtleFullshot.png")
     ]
+    spark = [
+        loadImage('./assets/Gifs/Sparks/blank.png'),
+        loadImage('./assets/Gifs/Sparks/sparkFrame0.gif'),
+        loadImage('./assets/Gifs/Sparks/sparkFrame1.gif'),
+        loadImage('./assets/Gifs/Sparks/sparkFrame2.gif'),
+        loadImage('./assets/Gifs/Sparks/sparkFrame3.gif'),
+        loadImage('./assets/Gifs/Sparks/sparkFrame4.gif')
+    ]
 
 def Show(keyInfo):
-    global Data, isErEenWinnaar, score1, score2, IsFirst, sizeKarakter1, xKarakter1, yKarakter1, sizeKarakter1, xKarakter2, yKarakter2, sizeKarakter2, victoryPlayer
+    global Data, isErEenWinnaar, score1, score2, IsFirst, sizeKarakter1, xKarakter1, yKarakter1, \
+    sizeKarakter1, xKarakter2, yKarakter2, sizeKarakter2, victoryPlayer, frameCounter1, frameCounter2 , clicked1, clicked2
     handleKeypress(keyInfo)
-    # Reset wanneer de programma opnieuwe word gebruikt
-    background(37)
-    
     # Kijkt welke plaatjes van de karakters op welke plek moet komen en hoe groot het moet zijn
     if isErEenWinnaar == False:
         imageMode(CORNER)
         image(achtergrond, 0, 0)
+        if clicked1 == True:
+            if frameCount % 5 == 0 and frameCounter1 < 5:
+                frameCounter1 += 1
+            if frameCounter1 == 5:
+                frameCounter1 = 0
+                clicked1 = False
+        image(spark[frameCounter1], 200, 115, 82, 82)
+        if clicked2 == True:
+            if frameCount % 5 == 0 and frameCounter2 < 5:
+                frameCounter2 += 1
+            if frameCounter2 == 5:
+                frameCounter2 = 0
+                clicked2 = False
+        image(spark[frameCounter2], 668, 115, 82, 82)
         if score1 == scoreLimit or score2 == scoreLimit:
             isErEenWinnaar = True
         if gekozenKarakters[0] == 1:
@@ -105,6 +128,7 @@ def Show(keyInfo):
         text('Knop: P', 547, 217)
         text('Speler 1', 68, 582) 
         text('Speler 2', 546, 582)
+
         if isErEenWinnaar:
             victoryPlayer = 1 if score1 >= scoreLimit else 2
             print(victoryPlayer)
@@ -122,14 +146,14 @@ def Show(keyInfo):
 
 # Detecteerd welke knoppen word in gedrukt en geeft een punt voor elke dat een knop wordt ingedrutk
 def handleKeypress(keyInfo):
-    global score1, score2, isErEenWinnaar
+    global score1, score2, isErEenWinnaar, frameCounter, clicked1, clicked2
     if isErEenWinnaar == False and keyInfo["KeyReleased"]:
         if key == 'q' or key == 'Q':
             score1 += 1
             background(37)
-            image(spark, 218, 125, 50, 63)
+            clicked1 = True
         if key == 'p' or key == 'P':
             score2 += 1
             background(37)
-            image(spark, 688, 125, 50, 63)
+            clicked2 = True
 

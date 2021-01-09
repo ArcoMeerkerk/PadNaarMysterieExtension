@@ -5,7 +5,7 @@ gekozen = False
 # Color values voor de vierkanten waar de plaatjes zijn
 color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
 
-rassen = ["Mens", "Goblin", "Tiefling", "Kestudo", "Titaran"]
+rassen = ["Mens", "Goblin", "Tiefling", "Ketsudo", "Titaran"]
 rasKarakter1 = ""
 rasKarakter2 = ""
 rollen = ["Monk", "Tovenaar", "Barbaar", "Vechter", "Schurk"]

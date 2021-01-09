@@ -4,13 +4,13 @@ ButtonWidth = 150
 AmountofPlayers = 0
 Timer = 0
 
-def Show(font, buttonFont):
-    textFont(font)
+def Show(fonts) :
+    textFont(fonts["MainFont"])
     fill(0)
     textAlign(CENTER)
     text("Selecteer spelers", width//2, 150)
 
-    return ShowAmountButtons(buttonFont)
+    return ShowAmountButtons(fonts["ButtonFont"])
 
 def ShowAmountButtons(buttonFont):
     global AmountofPlayers, Timer

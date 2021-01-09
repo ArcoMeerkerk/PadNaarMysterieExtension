@@ -1,27 +1,41 @@
-BottomMargin = 75
-ButtonHeight = 50
-ButtonWidth = 300
+import glob
+from modules.views import pdfViewer
 
-def Show(font, buttonFont) :
-    textFont(font)
+IconFont = None
+PdfViewerWindowScreen = None
+
+def Show(fonts) :
+    global PdfViewerWindowScreen
+    textFont(fonts["MainFont"])
     fill(0)
     textAlign(CENTER)               
     text("Homescreen", width//2, 150)
     
-    return ShowVechtButton(buttonFont)
+    if ShowButton(fonts["IconFont"], u"\uf02d", fonts["ButtonFont"], "Handleiding", 300, 50, 300) :
+        if PdfViewerWindowScreen == None :
+            this.surface.setLocation(displayWidth - width * 2 - 20, displayHeight // 2 - height // 2)
+            PdfViewerWindowScreen = pdfViewer.PdfViewerWindow([loadImage(pageFile) for pageFile in glob.glob("./assets/pdf/handleiding/Page-*.png")], fonts["IconFont"])
+        else :
+            PdfViewerWindowScreen.getSurface().setVisible(True)
 
-def ShowVechtButton(buttonFont) :
+    return not ShowButton(fonts["IconFont"], u"\uf441", fonts["ButtonFont"], "VECHT", 75, 50, 300)
+
+def ShowButton(iconFont, icon, buttonFont, buttonText, bottomMargin, buttonHeight, buttonWidth) :
     fill(0)
     rectMode(CENTER)
-    rect(width//2, height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(buttonFont)
+    rect(width//2, height-bottomMargin, buttonWidth, buttonHeight)
     fill(255)
+    # textAlign(CENTER)
     textSize(32)
-    text("VECHT", width//2, height-BottomMargin+10)
+    textFont(buttonFont)
+    text(buttonText, width//2, height-bottomMargin+10)
+    fill(200)
+    textFont(iconFont)
+    text(icon, width//2, height-bottomMargin+10)
 
     if mousePressed and mouseButton == LEFT and \
-        mouseX > width//2 - ButtonWidth//2 and mouseX < width//2 + ButtonWidth//2 and \
-        mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
-        return False
-    else :
+        mouseX > width//2 - buttonWidth//2 and mouseX < width//2 + buttonWidth//2 and \
+        mouseY > height-bottomMargin - buttonHeight//2 and mouseY < height-bottomMargin + buttonHeight//2:
         return True
+    else :
+        return False

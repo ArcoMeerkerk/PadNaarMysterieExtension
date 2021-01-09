@@ -2,13 +2,13 @@ BottomMargin = 75
 ButtonHeight = 50
 ButtonWidth = 300
 
-def Show(font, buttonFont) :
-    textFont(font)
+def Show(fonts) :
+    textFont(fonts["MainFont"])
     fill(0)
     textAlign(CENTER)               
     text("Pad naar Mysterie", width//2, 150)
     
-    return ShowStartButton(buttonFont)
+    return ShowStartButton(fonts["ButtonFont"])
 
 def ShowStartButton(buttonFont) :
     fill(0)

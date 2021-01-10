@@ -15,8 +15,9 @@ frameCounter1 = 0
 frameCounter2 = 0
 clicked1 = False
 clicked2 = False
-def Setup(gekozenKarakters):
-    global plaatjes, achtergrond, spark, Speler1, Speler2
+def Setup(gekozenKarakters, soundFiles):
+    global plaatjes, achtergrond, spark, Speler1, Speler2, SoundFiles
+    SoundFiles = soundFiles
     Speler1 = gekozenKarakters[0]
     Speler2 = gekozenKarakters[1]
     achtergrond = loadImage("./assets/images/achtergrondElementen/vs_achtergrond.png")
@@ -151,8 +152,10 @@ def handleKeypress(keyInfo):
             score1 += 1
             background(37)
             clicked1 = True
+            SoundFiles['FightSound1'].play()
         if key == 'p' or key == 'P':
             score2 += 1
             background(37)
             clicked2 = True
+            SoundFiles['FightSound2'].play()
 

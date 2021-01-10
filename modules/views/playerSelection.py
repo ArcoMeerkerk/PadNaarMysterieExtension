@@ -11,8 +11,8 @@ color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
 AmountofPlayers = 6
 aantalKaraktersGekozen = 0
 
-def Setup(amountOfPlayers, SoundFiles):
-    global Karakters, SelectieAchtergrond, AmountofPlayers, selectieGeluidje
+def Setup(amountOfPlayers):
+    global Karakters, SelectieAchtergrond, AmountofPlayers
     Karakters = [
         Karakter(loadImage("./assets/images/karakters/Berserker-min.png")),
         Karakter(loadImage("./assets/images/karakters/Fighter-min.png")),
@@ -21,12 +21,11 @@ def Setup(amountOfPlayers, SoundFiles):
         Karakter(loadImage("./assets/images/karakters/Sorcerer-min.png")),
         Karakter(loadImage("./assets/images/karakters/Turtle-min.png")),
     ]
-    # selectieGeluidje = SoundFiles['SelectieGeluid']
     SelectieAchtergrond = loadImage("./assets/images/achtergrondElementen/selectieAchtergrond.png")
     AmountofPlayers = amountOfPlayers
 
 def Show():
-    global Karakters, GekozenKarakters, color, aantalKaraktersGekozen, selectieGeluidje
+    global Karakters, GekozenKarakters, color, aantalKaraktersGekozen
     background(37)
     #Achtergrond voor de karakter selectie knoppen
     imageMode(CENTER)
@@ -67,42 +66,36 @@ def Show():
                     color[0] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[0].IsGekozen = True
-                    # selectieGeluidje.play()
             if Karakters[1].IsGekozen == False:
                 if (mouseX > 327.5 and mouseX < (327.5 + 145) and mouseY > 42.5 and mouseY < (42.5 + 145)):
                     GekozenKarakters.append('Fighter')
                     color[1] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[1].IsGekozen = True
-                    # selectieGeluidje.play()
             if Karakters[2].IsGekozen == False:
                 if (mouseX > 526.5 and mouseX < (526.5 + 145) and mouseY > 42.5 and mouseY < (42.5 + 145)):
                     GekozenKarakters.append('Goblin')
                     color[2] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[2].IsGekozen = True
-                    # selectieGeluidje.play()
             if Karakters[3].IsGekozen == False:
                 if (mouseX > 127.5 and mouseX < (127.5 + 145) and mouseY > 240.5 and mouseY < (240.5 + 145)):
                     GekozenKarakters.append('Monk')
                     color[3] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[3].IsGekozen = True
-                    # selectieGeluidje.play()
             if Karakters[4].IsGekozen == False:
                 if (mouseX > 327.5 and mouseX < (327.5 + 145) and mouseY > 240.5 and mouseY < (240.5 + 145)):
                     GekozenKarakters.append('Sorcerer')
                     color[4] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[4].IsGekozen = True
-                    # selectieGeluidje.play()
             if Karakters[5].IsGekozen == False:
                 if (mouseX > 526.5 and mouseX < (526.5 + 145) and mouseY > 240.5 and mouseY < (240.5 + 145)):
                     GekozenKarakters.append('Turtle')
                     color[5] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[5].IsGekozen = True
-                    # selectieGeluidje.play()
             print(GekozenKarakters)
     # Reset Knop vakje en text
     fill(255)   

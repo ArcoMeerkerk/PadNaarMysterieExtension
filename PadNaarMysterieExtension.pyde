@@ -23,7 +23,7 @@ def draw():
     global MouseScroll
 
     background(255)
-    cursor.Show()
+    cursor.Show(this)
     viewsModel.Show(Fonts)          
 
     # audio.MouseEffect([Sf1, Sf2])

@@ -1,4 +1,4 @@
-from modules import button
+from modules import button, cursor
 
 class PdfViewerWindow(PApplet):
     IsExited = False
@@ -14,11 +14,13 @@ class PdfViewerWindow(PApplet):
         self.surface.setLocation(displayWidth - self.width - 11, 5)
         self.Pages = pages
         self.IconFont = iconFont
+        cursor.Setup()
         
     def settings(self):
         self.size(800, 1000)
 
     def draw(self):
+        cursor.Show(self)
         if self != None and self.Pages != None and self.IconFont != None and len(self.Pages) != None and not self.IsExited :
             self.background(255)
             self.textFont(self.IconFont)

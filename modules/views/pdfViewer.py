@@ -1,5 +1,7 @@
 from modules import button, cursor
 
+IsVisable = False
+
 class PdfViewerWindow(PApplet):
     IsExited = False
     Pages = None
@@ -8,12 +10,14 @@ class PdfViewerWindow(PApplet):
     MouseReleased = False
     Margin = 25
         
-    def __init__(self, pages, iconFont):
+    def __init__(self, pages, iconFont, logo, windowLocation):
         PApplet.runSketch(('--sketch-path=' + sketchPath(), ''), self)
         self.surface.setTitle("Handleiding")
-        self.surface.setLocation(displayWidth - self.width - 11, 5)
+        self.SetWindowLocation(windowLocation)
+        self.surface.setIcon(logo)
         self.Pages = pages
         self.IconFont = iconFont
+        self.IsVisable = True
         cursor.Setup()
         
     def settings(self):
@@ -44,7 +48,14 @@ class PdfViewerWindow(PApplet):
 
             self.MouseReleased = False
 
+    def SetWindowLocation(self, windowLocation) :
+        print(windowLocation)
+        posx = windowLocation[0][0] + windowLocation[1][0] - self.width - 14
+        posy = 5 + windowLocation[1][1]
+        self.surface.setLocation(posx, posy)
+
     def exit(self):
+        self.IsVisable = False
         pass
 
     def mouseReleased(self, mouseEvent) :

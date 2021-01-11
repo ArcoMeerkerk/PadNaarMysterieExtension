@@ -1,4 +1,6 @@
 import glob
+from modules.screen import SetScreenLocation
+from modules.screen import GetWindowLocation
 from modules.views import pdfViewer
 
 IconFont = None
@@ -12,11 +14,16 @@ def Show(fonts) :
     text("Homescreen", width//2, 150)
     
     if ShowButton(fonts["IconFont"], u"\uf02d", fonts["ButtonFont"], "Handleiding", 300, 50, 300) :
+        # print(PdfViewerWindowScreen.IsVisable)
         if PdfViewerWindowScreen == None :
-            this.surface.setLocation(displayWidth - width * 2 - 20, displayHeight // 2 - height // 2)
-            PdfViewerWindowScreen = pdfViewer.PdfViewerWindow([loadImage(pageFile) for pageFile in glob.glob("./assets/pdf/handleiding/Page-*.png")], fonts["IconFont"])
-        else :
+            PdfViewerWindowScreen = pdfViewer.PdfViewerWindow([loadImage(pageFile) for pageFile in glob.glob("./assets/pdf/handleiding/Page-*.png")],
+            fonts["IconFont"],
+            loadImage("./assets/images/icons/document.png"),
+            GetWindowLocation(this))
+            SetScreenLocation(this)
+        elif PdfViewerWindowScreen.IsVisable == False :
             PdfViewerWindowScreen.getSurface().setVisible(True)
+            PdfViewerWindowScreen.SetWindowLocation(SetScreenLocation(this))
 
     return not ShowButton(fonts["IconFont"], u"\uf441", fonts["ButtonFont"], "VECHT", 75, 50, 300)
 
@@ -25,7 +32,6 @@ def ShowButton(iconFont, icon, buttonFont, buttonText, bottomMargin, buttonHeigh
     rectMode(CENTER)
     rect(width//2, height-bottomMargin, buttonWidth, buttonHeight)
     fill(255)
-    # textAlign(CENTER)
     textSize(32)
     textFont(buttonFont)
     text(buttonText, width//2, height-bottomMargin+10)

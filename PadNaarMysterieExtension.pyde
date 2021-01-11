@@ -14,6 +14,7 @@ def setup():
     background(255)
     size(800, 600)
     this.surface.setTitle("Pad naar Mysterie uitbreiding")
+    this.surface.setIcon(loadImage("./assets/images/icons/logo.png"))
     frameRate(60)
     
     cursor.Setup()

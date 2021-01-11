@@ -1,5 +1,5 @@
 from modules import audio
-from modules.views import viewsModel, splashScreen, playerAmount, homescreen
+from modules.views import viewsModel, splashScreen, playerAmount
 from modules.vechtModules import vechtModule
 add_library("sound")
 
@@ -24,7 +24,6 @@ def setup():
     frameRate(60)
 
     vechtModule.Setup()
-    homescreen.Setup()
 
     # Sf1.play()
     

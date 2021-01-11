@@ -1,4 +1,4 @@
-from modules.views import splashScreen, playerAmount, playerSelection, homescreen, event
+from modules.views import splashScreen, playerAmount, playerSelection, homeScreen, event
 from modules.vechtModules import vechtModule
 
 class Screen:
@@ -13,7 +13,7 @@ class Screen:
 SplashScreen = Screen(splashScreen.Show, True)
 PlayerAmount = Screen(playerAmount.Show, False)
 PlayerSelection = Screen(playerSelection.Show, False)
-HomeScreen = Screen(homescreen.Show, False)
+HomeScreen = Screen(homeScreen.Show, False)
 VechtModule = Screen(vechtModule.Show, False)
 
 def Show(mainFont, buttonFont, backButton) :
@@ -27,6 +27,7 @@ def Show(mainFont, buttonFont, backButton) :
         PlayerAmount.Show(mainFont, buttonFont)
         if PlayerAmount.IsShowing == False :
             HomeScreen.IsShowing = True
+            homeScreen.Setup(['Goblin', 'Fighter', 'Berserker', 'Monk', 'Sorcerer'])
     elif HomeScreen.IsShowing :
         HomeScreen.Show(mainFont, buttonFont)
         event.TimerForEvent(backButton)

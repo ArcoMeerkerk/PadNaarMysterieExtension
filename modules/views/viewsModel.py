@@ -29,7 +29,7 @@ def Show(mainFont, buttonFont, backButton) :
             HomeScreen.IsShowing = True
             homeScreen.Setup(['Goblin', 'Fighter', 'Berserker', 'Monk', 'Sorcerer'])
     elif HomeScreen.IsShowing :
-        HomeScreen.Show(mainFont, buttonFont)
+        HomeScreen.Show(mainFont, buttonFont, 20)
         event.TimerForEvent(backButton)
         if HomeScreen.IsShowing == False :
             VechtModule.IsShowing = True

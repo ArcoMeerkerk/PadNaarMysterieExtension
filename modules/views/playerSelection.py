@@ -8,11 +8,10 @@ Karakters = []
 GekozenKarakters = []
 # Color values voor de vierkanten waar de plaatjes zijn
 color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"]
-AmountofPlayers = 6
 aantalKaraktersGekozen = 0
 
-def Setup(amountOfPlayers):
-    global Karakters, SelectieAchtergrond, AmountofPlayers
+def Setup():
+    global Karakters, SelectieAchtergrond
     Karakters = [
         Karakter(loadImage("./assets/images/karakters/Berserker-min.png")),
         Karakter(loadImage("./assets/images/karakters/Fighter-min.png")),
@@ -22,9 +21,8 @@ def Setup(amountOfPlayers):
         Karakter(loadImage("./assets/images/karakters/Turtle-min.png")),
     ]
     SelectieAchtergrond = loadImage("./assets/images/achtergrondElementen/selectieAchtergrond.png")
-    AmountofPlayers = amountOfPlayers
 
-def Show():
+def Show(amountOfPlayers):
     global Karakters, GekozenKarakters, color, aantalKaraktersGekozen
     background(37)
     #Achtergrond voor de karakter selectie knoppen
@@ -58,7 +56,7 @@ def Show():
     image(Karakters[4].Image, 400, 313, 140, 140)
     image(Karakters[5].Image, 600, 313, 140, 140)
     # Karakters selecteren 
-    if aantalKaraktersGekozen < AmountofPlayers:
+    if aantalKaraktersGekozen < amountOfPlayers:
         if mousePressed:
             if Karakters[0].IsGekozen == False:
                 if (mouseX > 127.5 and mouseX < (127.5 + 145) and mouseY > 42.5 and mouseY < (42.5 + 145)):
@@ -108,7 +106,7 @@ def Show():
     # Uileg text
     textSize(32)
     fill('#C69C6D')
-    text("Kies " + str(AmountofPlayers) + " karakters", 398, 449)
+    text("Kies " + str(amountOfPlayers) + " karakters", 398, 449)
     # Reset knop dat alle selecties reset
     if mousePressed:
         if (mouseX > 505 and mouseX < (505 + 188) and mouseY > 505 and mouseY < (505 + 42)):
@@ -119,7 +117,7 @@ def Show():
             aantalKaraktersGekozen = 0
             background(37)
     #Accepteer knop
-    if aantalKaraktersGekozen == AmountofPlayers:
+    if aantalKaraktersGekozen == amountOfPlayers:
         fill('#C69C6D')   
         rectMode(CORNER)  
         rect(105, 505, 188, 42, 12)

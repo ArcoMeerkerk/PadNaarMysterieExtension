@@ -9,6 +9,7 @@ IsShowingPlayerSelection = False
 IsShowingHomescreen = False
 MainFont = loadFont("./assets/fonts/Algerian-64.vlw")
 ButtonFont = loadFont("./assets/fonts/ArialMT-32.vlw")
+BellFont = loadFont("./assets/fonts/BellMTBold-48.vlw")
 KeyInfo = {}
 MouseInfo = {}
 SoundFiles = {
@@ -29,14 +30,14 @@ def setup():
     global BackButton
     audio.SetVolume(SoundFiles.values(), 0.5)
     BackButton = loadImage('./assets/images/BackButton.png')    
-    background(255)
+    background(37)
     size(800, 600)
     frameRate(60)
     
 def draw():
     global KeyInfo, MouseInfo, MouseScroll, SoundFiles
-    background(255)
-    viewsModel.Show(KeyInfo, MouseInfo, SoundFiles, MainFont, ButtonFont, BackButton)          
+    background(37)
+    viewsModel.Show(KeyInfo, MouseInfo, SoundFiles, MainFont, ButtonFont, BackButton, BellFont)          
     audio.SetVolumeMouseScroll(SoundFiles.values(), MouseScroll)
     MouseScroll = 0
     KeyInfo["KeyReleased"] = False

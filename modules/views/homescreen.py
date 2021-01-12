@@ -6,7 +6,7 @@ def Show(font, buttonFont, mouseInfo, soundFiles) :
     global ChangeAudioFilesPressed1, ChangeAudioFilesPressed2
     SoundFiles = soundFiles
     textFont(font)
-    fill(0)
+    fill('#C69C6D')
     textAlign(CENTER)               
     text("Homescreen", width//2, 150)
     ChangeAudioFiles(mouseInfo["MouseReleased"], soundFiles)
@@ -17,7 +17,7 @@ def Show(font, buttonFont, mouseInfo, soundFiles) :
 def ShowButton(buttonFont, mouseReleased, bottomMargin, buttonHeight, buttonWidth,  buttonText = "", align="CENTER") :
     global Timer
     if buttonText != "" :
-        fill(0)
+        fill('#C69C6D')
         rectMode(CENTER)
         rect(width//2, height-bottomMargin, buttonWidth, buttonHeight)
         textFont(buttonFont)

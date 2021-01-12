@@ -20,20 +20,21 @@ def LoadEvent():
     EventKeuze = random.choice(list(obj.values()))
     return str(EventKeuze)
 
-def Show(backButton):
+def Show(backButton, bellFont):
     global EventKeuze, LoadEventCheck, TimeTicker, EventTimer,TextEvent, ImageSizeX, ImageSizeY, ImagePlaceX, ImagePlaceY, TextSizeX, TextSizeY, TextPlaceX, TextPlaceY
     TimeTicker = False
     imageMode(CORNER)
     textAlign(CENTER, CENTER)
-    textSize(26)
+    textFont(bellFont)
+    textSize(28)
     noStroke()
-    fill(100)
-    rect(BackgroundPlaceX, BackgroundPlaceY, BackgroundSizeX, BackgroundSizeY, 5)
+    fill(250, 235)
+    rect(BackgroundPlaceX, BackgroundPlaceY, BackgroundSizeX, BackgroundSizeY, 12)
     if LoadEventCheck == True:
         LoadEventCheck = False
         TextEvent = LoadEvent()
     image(backButton, ImagePlaceX, ImagePlaceY, ImageSizeX, ImageSizeY)
-    fill(255)
+    fill('#C69C6D')
     text(TextEvent, TextPlaceX, TextPlaceY, TextSizeX, TextSizeY)
 
     if mousePressed:
@@ -42,7 +43,7 @@ def Show(backButton):
             LoadEventCheck = True
             TimeTicker = True
 
-def TimerForEvent(backButton):
+def TimerForEvent(backButton, bellFont):
     global TimeTicker, randomEventTimer, EventEndTime, EventTimer, LoadEventCheck
     if EventTimer == 0 or EventTimer >= EventEndTime:
         EventTimer = 1
@@ -50,6 +51,6 @@ def TimerForEvent(backButton):
     if EventTimer < EventEndTime and TimeTicker == True:
         EventTimer += 1
     if EventTimer >= randomEventTimer:
-        Show(backButton)
+        Show(backButton, bellFont)
     else:
         TimeTicker = True

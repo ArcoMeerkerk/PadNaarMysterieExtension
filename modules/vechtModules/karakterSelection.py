@@ -14,8 +14,8 @@ rolKarakter2 = ""
 IsFirst = True
 Data = {}
 
-def Show():
-    background(35)
+def Show(bellFont):
+    background(37)
     global GekozenKarakters, i, speler, gekozen, color, rasKarakter1, rasKarakter2, rolKarakter1, rolKarakter2, Data, IsFirst
     if IsFirst:
         IsFirst = False
@@ -147,6 +147,7 @@ def Show():
                 rasKarakter2 = rassen[3]
                 rolKarakter2 = rollen[2]
     # Speler info en Selectie
+    textFont(bellFont)
     imageMode(CORNER)
     image(Data["houtenAchtergrond"], 52, 343, 335, 190)
     image(Data["houtenAchtergrond"], 412, 343, 335, 190)
@@ -164,11 +165,11 @@ def Show():
     text(rasKarakter2, 614, 393)
     text(rolKarakter2, 614, 431)
     # Achtergrond van select knop  
-    fill(255)
+    fill('#C69C6D')
     rectMode(CORNER)  
-    rect(300, 548, 200, 35)
+    rect(300, 548, 200, 35, 12)
     # Select knop
-    fill(0)
+    fill(255)
     textSize(32)
     textAlign(CENTER)
     text("Select", 400, 576)

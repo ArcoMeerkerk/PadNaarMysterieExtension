@@ -98,16 +98,16 @@ def Show():
                     Karakters[5].IsGekozen = True
             print(GekozenKarakters)
     # Reset Knop vakje en text
-    fill(255)   
+    fill('#C69C6D')   
     rectMode(CORNER)  
-    rect(505, 505, 188, 42)
-    fill(0)
+    rect(505, 505, 188, 42, 12)
+    fill(255)
     textSize(29)
     textAlign(CENTER, CENTER)
     text("Reset", 597, 525)
     # Uileg text
     textSize(32)
-    fill(255)
+    fill('#C69C6D')
     text("Kies " + str(AmountofPlayers) + " karakters", 398, 449)
     # Reset knop dat alle selecties reset
     if mousePressed:
@@ -120,13 +120,13 @@ def Show():
             background(37)
     #Accepteer knop
     if aantalKaraktersGekozen == AmountofPlayers:
-        fill(255)   
+        fill('#C69C6D')   
         rectMode(CORNER)  
-        rect(105, 505, 188, 42)
-        fill(0)
+        rect(105, 505, 188, 42, 12)
+        fill(255)
         textSize(29)
         textAlign(CENTER, CENTER)
-        text("Accepteer", 205, 525)
+        text("Accepteer", 195, 525)
         if mousePressed:
             if (mouseX > 105 and mouseX < (105 + 188) and mouseY > 505 and mouseY < (505 + 42)):
                 print(GekozenKarakters)

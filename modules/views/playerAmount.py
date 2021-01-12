@@ -1,59 +1,59 @@
-BottomMargin = 75
-ButtonHeight = 50
-ButtonWidth = 150
+ButtonYCord = 243
+ButtonHeight = 58
+ButtonWidth = 205
 AmountofPlayers = 0
 Timer = 0
 
-def Show(font, buttonFont):
-    textFont(font)
-    fill(0)
-    textAlign(CENTER)
-    text("Selecteer spelers", width//2, 150)
+def Show(font, buttonFont, bellFont):
+    textFont(bellFont)
+    fill(255)
+    textAlign(CENTER, CENTER)
+    textSize(72)
+    text("Kies het aantal spelers", width//2, 113)
+    return ShowAmountButtons(bellFont)
 
-    return ShowAmountButtons(buttonFont)
-
-def ShowAmountButtons(buttonFont):
+def ShowAmountButtons(bellFont):
     global AmountofPlayers, Timer
     Timer += 1
 
-    fill(0)
+    fill('#C69C6D')
     rectMode(CENTER)
-    rect(width//4, height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(buttonFont)
+    rect(width//2, ButtonYCord, ButtonWidth, ButtonHeight, 12)
+    textFont(bellFont)
     fill(255)
     textSize(32)
-    text("4 Spelers", width//4, height-BottomMargin+10)
+    text("4 Spelers", width//2, ButtonYCord)
 
-    fill(0)
+    fill('#C69C6D')
     rectMode(CENTER)
-    rect(width//2, height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(buttonFont)
+    rect(width//2, ButtonYCord + 114, ButtonWidth, ButtonHeight, 12)
+    textFont(bellFont)
     fill(255)
     textSize(32)
-    text("5 Spelers", width//2, height-BottomMargin+10)
+    text("5 Spelers", width//2, ButtonYCord + 114)
 
-    fill(0)
+    fill('#C69C6D')
     rectMode(CENTER)
-    rect(3*(width//4), height-BottomMargin, ButtonWidth, ButtonHeight)
-    textFont(buttonFont)
+    rect(width//2, ButtonYCord + 227, ButtonWidth, ButtonHeight, 12)
+    textFont(bellFont)
     fill(255)
     textSize(32)
-    text("6 Spelers", 3*(width//4), height-BottomMargin+10)
+    text("6 Spelers", width//2, ButtonYCord + 227)
 
     if Timer > 30 :
         if mousePressed and mouseButton == LEFT and \
-            mouseX > width//4 - ButtonWidth//2 and mouseX < width//4 + ButtonWidth//2 and \
-            mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
+            mouseX > width//2 - ButtonWidth//2 and mouseX < width//1 + ButtonWidth//2 and \
+            mouseY > ButtonYCord - ButtonHeight//2 and mouseY < ButtonYCord + ButtonHeight//2:
             AmountofPlayers = 4
             return False
         elif mousePressed and mouseButton == LEFT and \
             mouseX > width//2 - ButtonWidth//2 and mouseX < width//2 + ButtonWidth//2 and \
-            mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
+            mouseY > ButtonYCord + 114 - ButtonHeight//2 and mouseY < ButtonYCord + 114 + ButtonHeight//2:
             AmountofPlayers = 5
             return False
         elif mousePressed and mouseButton == LEFT and \
-            mouseX > 3*(width//4) - ButtonWidth//2 and mouseX < 3*(width//4) + ButtonWidth//2 and \
-            mouseY > height-BottomMargin - ButtonHeight//2 and mouseY < height-BottomMargin + ButtonHeight//2:
+            mouseX > width//2 - ButtonWidth//2 and mouseX < width//2 + ButtonWidth//2 and \
+            mouseY > ButtonYCord + 227 - ButtonHeight//2 and mouseY < ButtonYCord + 227 + ButtonHeight//2:
             AmountofPlayers = 6
             return False
         else :

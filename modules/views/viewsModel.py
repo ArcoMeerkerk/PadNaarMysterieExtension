@@ -18,13 +18,13 @@ KarakterSelection = Screen(karakterSelection.Show, False)
 Fight = Screen(fight.Show, False)
 FightResult = Screen(fightResult.Show, False)
 
-def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton) :
+def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellFont) :
     if SplashScreen.IsShowing :
-        SplashScreen.Show(mainFont, buttonFont)
+        SplashScreen.Show(mainFont, buttonFont, bellFont)
         if SplashScreen.IsShowing == False :
             PlayerAmount.IsShowing = True
     elif PlayerAmount.IsShowing :
-        PlayerAmount.Show(mainFont, buttonFont)
+        PlayerAmount.Show(mainFont, buttonFont, bellFont)
         if PlayerAmount.IsShowing == False :
             PlayerSelection.IsShowing = True
             playerSelection.Setup(playerAmount.AmountofPlayers)
@@ -34,12 +34,12 @@ def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton) :
             HomeScreen.IsShowing = True
     elif HomeScreen.IsShowing :
         HomeScreen.Show(mainFont, buttonFont, mouseInfo, soundFiles)
-        event.TimerForEvent(backButton)
+        event.TimerForEvent(backButton, bellFont)
         if HomeScreen.IsShowing == False :
             KarakterSelection.IsShowing = True
             karakterSelection.Setup()
     elif KarakterSelection.IsShowing :  
-        KarakterSelection.Show()
+        KarakterSelection.Show(bellFont)
         if KarakterSelection.IsShowing == False :
             Fight.IsShowing = True
             fight.Setup(karakterSelection.GekozenKarakters, soundFiles)

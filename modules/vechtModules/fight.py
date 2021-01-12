@@ -51,14 +51,14 @@ def Show(keyInfo):
             if frameCounter1 == 4:
                 frameCounter1 = 0
                 clicked1 = False
-            image(spark[frameCounter1], 200, 115, 82, 82)
+            image(spark[frameCounter1], 170, 117, 82, 82)
         if clicked2 == True:
             if frameCount % 5 == 0 and frameCounter2 < 5:
                 frameCounter2 += 1
             if frameCounter2 == 5:
                 frameCounter2 = 0
                 clicked2 = False
-            image(spark[frameCounter2], 668, 115, 82, 82)
+            image(spark[frameCounter2], 643, 117, 82, 82)
         if score1 == scoreLimit or score2 == scoreLimit:
             isErEenWinnaar = True
         if gekozenKarakters[0] == 1:
@@ -116,18 +116,25 @@ def Show(keyInfo):
         image(plaatjes[Speler1 - 1], xKarakter1, yKarakter1, sizeKarakter1, sizeKarakter1)
         image(plaatjes[Speler2 - 1], xKarakter2, yKarakter2, sizeKarakter2, sizeKarakter2)
         # Al het text dat op de scherm komt te staan
-        textSize(32)
+        textSize(36)
         textAlign(CENTER, CENTER)
-        fill(255)
+        fill('#C69C6D')
         text('Klik zo snel mogelijk op\nhet knopje dat boven je karakter staat\n' + str(scoreLimit) + ' keer', 406, 76)
         textAlign(CORNER)
-        textSize(48)
+        textSize(42)
         text("Score: " + str(score1), 70, 172)
         text("Score: " + str(score2), 544, 172)
         text('Knop: Q', 73, 217)
         text('Knop: P', 547, 217)
-        text('Speler 1', 68, 582) 
-        text('Speler 2', 546, 582)
+        fill('#C69C6D')
+        rectMode(CENTER)
+        textAlign(CENTER)
+        rect(150, 574, 130, 38, 12)
+        rect(650, 574, 130, 38, 12)
+        fill(250)
+        textSize(32)
+        text('Speler 1', 150, 582) 
+        text('Speler 2', 650, 582)
 
         if isErEenWinnaar:
             victoryPlayer = 1 if score1 >= scoreLimit else 2

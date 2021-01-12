@@ -67,21 +67,21 @@ def ShowEndPos():
         fill(charColour[i][0],charColour[i][1],charColour[i][2])
         if len(CharacterImages) == 4:  
             if i + 3 + EndPosShift < 4:
-                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1])
+                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)
             if i + 3 + EndPosShift >= 4:
-                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1])        
+                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+60)        
         
         elif len(CharacterImages) == 5:
             #text("temp",CharacterCoordinates[CharacterImages[i][1]][0]+50,CharacterCoordinates[CharacterImages[i][1]][1]+50) test to see if offset actually works, if battles = 0, difference between temp and shift should be 3(straight across the middle)
             if i + 3 + EndPosShift < 5:
-                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1])
+                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)
             if i + 3 + EndPosShift >= 5:
-                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1])
+                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+60)
         else:
             if i + 3 + EndPosShift < 6:
-                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1])
+                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)
             if i + 3 + EndPosShift >= 6:
-                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]) 
+                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+60) 
 
         fill(255)           
 

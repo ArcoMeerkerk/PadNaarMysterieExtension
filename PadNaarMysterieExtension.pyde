@@ -33,6 +33,7 @@ def setup():
     background(37)
     size(800, 600)
     frameRate(60)
+    viewsModel.Setup()
     
 def draw():
     global KeyInfo, MouseInfo, MouseScroll, SoundFiles

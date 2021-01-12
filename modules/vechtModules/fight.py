@@ -15,11 +15,8 @@ frameCounter1 = 0
 frameCounter2 = 0
 clicked1 = False
 clicked2 = False
-def Setup(gekozenKarakters, soundFiles):
-    global plaatjes, achtergrond, spark, Speler1, Speler2, SoundFiles
-    SoundFiles = soundFiles
-    Speler1 = gekozenKarakters[0]
-    Speler2 = gekozenKarakters[1]
+def Setup():
+    global plaatjes, achtergrond, sparks
     achtergrond = loadImage("./assets/images/achtergrondElementen/vs_achtergrond.png")
     plaatjes = [
         loadImage("./assets/images/karakters/BerserkerFullshot.png"),
@@ -29,7 +26,7 @@ def Setup(gekozenKarakters, soundFiles):
         loadImage("./assets/images/karakters/SorcererFullshot.png"),
         loadImage("./assets/images/karakters/TurtleFullshot.png")
     ]
-    spark = [
+    sparks = [
         loadImage('./assets/Gifs/Sparks/sparkFrame0.gif'),
         loadImage('./assets/Gifs/Sparks/sparkFrame1.gif'),
         loadImage('./assets/Gifs/Sparks/sparkFrame2.gif'),
@@ -37,10 +34,12 @@ def Setup(gekozenKarakters, soundFiles):
         loadImage('./assets/Gifs/Sparks/sparkFrame4.gif')
     ]
 
-def Show(keyInfo):
+def Show(keyInfo, gekozenKarakters, soundFiles):
     global Data, isErEenWinnaar, score1, score2, IsFirst, sizeKarakter1, xKarakter1, yKarakter1, \
     sizeKarakter1, xKarakter2, yKarakter2, sizeKarakter2, victoryPlayer, frameCounter1, frameCounter2 , clicked1, clicked2
-    handleKeypress(keyInfo)
+    Speler1 = gekozenKarakters[0]
+    Speler2 = gekozenKarakters[1]
+    handleKeypress(keyInfo, soundFiles)
     # Kijkt welke plaatjes van de karakters op welke plek moet komen en hoe groot het moet zijn
     if isErEenWinnaar == False:
         imageMode(CORNER)
@@ -51,14 +50,14 @@ def Show(keyInfo):
             if frameCounter1 == 4:
                 frameCounter1 = 0
                 clicked1 = False
-            image(spark[frameCounter1], 170, 117, 82, 82)
+            image(sparks[frameCounter1], 170, 117, 82, 82)
         if clicked2 == True:
             if frameCount % 5 == 0 and frameCounter2 < 5:
                 frameCounter2 += 1
             if frameCounter2 == 5:
                 frameCounter2 = 0
                 clicked2 = False
-            image(spark[frameCounter2], 643, 117, 82, 82)
+            image(sparks[frameCounter2], 643, 117, 82, 82)
         if score1 == scoreLimit or score2 == scoreLimit:
             isErEenWinnaar = True
         if gekozenKarakters[0] == 1:
@@ -148,21 +147,45 @@ def Show(keyInfo):
             yKarakter2 = 0
             score1 = 0
             score2 = 0
+
+            # print(dir())
+            for plaatje in plaatjes :
+                plaatje.setLoaded(False)
+            for spark in sparks :
+                spark.setLoaded(False)
+
+
+            # plaatjes = [
+            #     loadImage("./assets/images/karakters/BerserkerFullshot.png"),
+            #     loadImage("./assets/images/karakters/FighterFullshot.png"),
+            #     loadImage("./assets/images/karakters/GoblinFullshot.png"),
+            #     loadImage("./assets/images/karakters/MonkFullshot.png"),
+            #     loadImage("./assets/images/karakters/SorcererFullshot.png"),
+            #     loadImage("./assets/images/karakters/TurtleFullshot.png")
+            # ]
+            # spark = [
+            #     loadImage('./assets/Gifs/Sparks/sparkFrame0.gif'),
+            #     loadImage('./assets/Gifs/Sparks/sparkFrame1.gif'),
+            #     loadImage('./assets/Gifs/Sparks/sparkFrame2.gif'),
+            #     loadImage('./assets/Gifs/Sparks/sparkFrame3.gif'),
+            #     loadImage('./assets/Gifs/Sparks/sparkFrame4.gif')
+            # ]
+
             return False
     return True
 
-# Detecteerd welke knoppen word in gedrukt en geeft een punt voor elke dat een knop wordt ingedrutk
-def handleKeypress(keyInfo):
+# Detecteert welke knoppen word in gedrukt en geeft een punt voor elke dat een knop wordt ingedrukt
+def handleKeypress(keyInfo, soundFiles):
     global score1, score2, isErEenWinnaar, frameCounter, clicked1, clicked2
     if isErEenWinnaar == False and keyInfo["KeyReleased"]:
         if key == 'q' or key == 'Q':
             score1 += 1
             background(37)
             clicked1 = True
-            SoundFiles['FightSound1'].play()
+            soundFiles['FightSound1'].play()
         if key == 'p' or key == 'P':
             score2 += 1
             background(37)
             clicked2 = True
-            SoundFiles['FightSound2'].play()
+            soundFiles['FightSound2'].play()
 

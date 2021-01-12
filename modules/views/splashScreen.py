@@ -3,7 +3,7 @@ ButtonHeight = 53
 ButtonWidth = 199
 
 def Show(font, buttonFont, bellFont) :
-    textFont(bellFont)
+    textFont(font)
     fill('#C69C6D')
     textAlign(CENTER, CENTER)
     textSize(48)               
@@ -14,6 +14,7 @@ def Show(font, buttonFont, bellFont) :
     rectMode(CORNER)
     rect(33, 190, 734, 266, 13.5)
     textAlign(LEFT, TOP)
+    textFont(bellFont)
     textSize(19)
     fill('#C69C6D')
     text(u"Dit is een uitbreiding op het spel: Pad Naar Mysterie.\nIn deze uitbreiding bevinden zich de volgende features:\n\

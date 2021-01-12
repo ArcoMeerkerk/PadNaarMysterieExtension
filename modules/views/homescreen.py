@@ -1,9 +1,42 @@
+
+import glob
+from modules.screen import SetScreenLocation
+from modules.screen import GetWindowLocation
+from modules.views import pdfViewer
+
+IconFont = None
+PdfViewerWindowScreen = None
 Timer = 0
 ChangedAudioFiles = False
 ChangeAudioFilesPressed1 = False
 ChangeAudioFilesPressed2 = False
+
+# if ShowButton(fonts["IconFont"], u"\uf02d", fonts["ButtonFont"], "Handleiding", 300, 50, 300) :
+#     # print(PdfViewerWindowScreen.IsVisable)
+
+# return not ShowButton(fonts["IconFont"], u"\uf441", fonts["ButtonFont"], "VECHT", 75, 50, 300)
+
+# def ShowButton(iconFont, icon, buttonFont, buttonText, bottomMargin, buttonHeight, buttonWidth) :
+#     fill(0)
+#     rectMode(CENTER)
+#     rect(width//2, height-bottomMargin, buttonWidth, buttonHeight)
+#     fill(255)
+#     textSize(32)
+#     textFont(buttonFont)
+#     text(buttonText, width//2, height-bottomMargin+10)
+#     fill(200)
+#     textFont(iconFont)
+#     text(icon, width//2, height-bottomMargin+10)
+
+#     if mousePressed and mouseButton == LEFT and \
+#         mouseX > width//2 - buttonWidth//2 and mouseX < width//2 + buttonWidth//2 and \
+#         mouseY > height-bottomMargin - buttonHeight//2 and mouseY < height-bottomMargin + buttonHeight//2:
+#         return True
+#     else :
+#         return False
+
 def Show(font, buttonFont, mouseInfo, soundFiles) :
-    global ChangeAudioFilesPressed1, ChangeAudioFilesPressed2
+    global ChangeAudioFilesPressed1, ChangeAudioFilesPressed2, PdfViewerWindowScreen
     SoundFiles = soundFiles
     textFont(font)
     fill('#C69C6D')
@@ -12,6 +45,20 @@ def Show(font, buttonFont, mouseInfo, soundFiles) :
     ChangeAudioFiles(mouseInfo["MouseReleased"], soundFiles)
     ChangeAudioFilesPressed1 = ShowButton(buttonFont, mouseInfo["MouseReleased"], 0, 15, 15, align="LEFT")
     ChangeAudioFilesPressed2 = ShowButton(buttonFont, mouseInfo["MouseReleased"], 0, 15, 15, align="RIGHT")
+    
+    if ShowButton(buttonFont, mouseInfo["MouseReleased"], 75, 50, 300, "Handleiding") :
+        if PdfViewerWindowScreen == None :
+            PdfViewerWindowScreen = pdfViewer.PdfViewerWindow([loadImage(pageFile) for pageFile in glob.glob("./assets/pdf/handleiding/Page-*.png")],
+            font,
+            # fonts["IconFont"],
+            loadImage("./assets/images/icons/document.png"),
+            GetWindowLocation(this))
+            SetScreenLocation(this)
+        elif PdfViewerWindowScreen.IsVisable == False :
+            PdfViewerWindowScreen.getSurface().setVisible(True)
+            PdfViewerWindowScreen.SetWindowLocation(SetScreenLocation(this))
+
+
     return not ShowButton(buttonFont, mouseInfo["MouseReleased"], 75, 50, 300, "VECHT")
 
 def ShowButton(buttonFont, mouseReleased, bottomMargin, buttonHeight, buttonWidth,  buttonText = "", align="CENTER") :

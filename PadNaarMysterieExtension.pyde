@@ -1,4 +1,4 @@
-from modules import audio
+from modules import audio, cursor
 from modules.views import viewsModel, splashScreen, playerAmount, homescreen
 add_library("sound")
 
@@ -25,14 +25,25 @@ SoundFiles = {
     'VictorySound' : SoundFile(this, "./assets/audio/Victory.wav"),
     'VictoryMusic' : SoundFile(this, "./assets/audio/VictoryMusic.wav")
 }
+Fonts = {
+    "MainFont": loadFont("./assets/fonts/Algerian-64.vlw"),
+    "ButtonFont": loadFont("./assets/fonts/ArialMT-32.vlw"),
+    "IconFont": loadFont("./assets/fonts/FontAwesome/FontAwesome5Free-Solid-128.vlw")
+}
 
 def setup():
     global BackButton
+    background(255)
+    size(800, 600)
+    frameRate(60)
+
     audio.SetVolume(SoundFiles.values(), 0.5)
     BackButton = loadImage('./assets/images/BackButton.png')    
     background(37)
-    size(800, 600)
-    frameRate(60)
+    this.surface.setTitle("Pad naar Mysterie uitbreiding")
+    this.surface.setIcon(loadImage("./assets/images/icons/logo.png"))
+    cursor.Setup()
+    viewsModel.Setup()
     
 def draw():
     global KeyInfo, MouseInfo, MouseScroll, SoundFiles
@@ -42,6 +53,7 @@ def draw():
     MouseScroll = 0
     KeyInfo["KeyReleased"] = False
     MouseInfo["MouseReleased"] = False
+    cursor.Show(this)
 
 def keyReleased(event) :
     global KeyInfo

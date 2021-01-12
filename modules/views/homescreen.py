@@ -3,7 +3,7 @@ BottomMargin = 75
 ButtonHeight = 50
 ButtonWidth = 300
 charSize = [50,50] # x & y ; width and height ro fullshots
-battles = 1 #should be Jue Jun's variable, not sure if his bit is working atm
+battles = 0 #should be Jue Jun's variable, not sure if his bit is working atm
 EndPosShift = battles % 6
 CharacterImages = None
 CharacterCoordinates = None
@@ -38,7 +38,11 @@ def Setup(characters):
 
     #random.shuffle(coordinateIndexes)
     random.shuffle(characters)
-    CharacterImages = [(loadImage("../assets/images/karakters/" + cursorImage + "FullshotTransparent.png"), allowedPos[index]) for index, cursorImage in enumerate(characters)]
+    CharacterImages = [(loadImage("../assets/images/karakters/" + cursorImage + "FullshotTransparent.png"),
+     allowedPos[index],
+     charColour[index]
+     ) for index,
+      cursorImage in enumerate(characters)]
     print(coordinateIndexes)
     print(CharacterImages)
     print(characters)
@@ -61,10 +65,9 @@ def ShowEndPos():
     
     colorMode(RGB)
     for i in range(len(CharacterImages)):
-        textSize(32)
-        charColour = [(100,100,0),(124,50,124),(150,150,255),(75,170,170),(50,80,50),(200,100,200)]	
+        textSize(32)	
         
-        fill(charColour[i][0],charColour[i][1],charColour[i][2])
+        fill(CharacterImages[i][2][0],CharacterImages[i][2][1],CharacterImages[i][2][2])
         if len(CharacterImages) == 4:  
             if i + 3 + EndPosShift < 4:
                 text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)

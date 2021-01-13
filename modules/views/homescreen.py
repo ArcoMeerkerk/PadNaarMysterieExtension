@@ -14,7 +14,7 @@ def Setup(characters):
     CharacterCoordinates = [
         ((width // 2) - (charSize[0] //2) + 50, (height // 4) - (charSize[1] // 2) + charSize[1] - 110+3,charSize[0],charSize[1]),
         ((width // 4 * 3) - charSize[0] - charSize[0] // 2  - charSize[0] // 10 + 50-1, (height // 2) - charSize[1] +2 -105+5, charSize[0], charSize[1]), # x positie hetzelfde als pos 3, y als pos 6
-        ((width // 4 * 3) - charSize[0] - charSize[0] // 2  - charSize[0] // 10 + 50-1, (height // 4 * 3) - charSize[1] - 5 -80, charSize[0],charSize[1]),
+        ((width // 4 * 3) - charSize[0] - charSize[0] // 2  - charSize[0] // 10 + 50-1, (height // 4 * 3) - charSize[1] -80 - 1.25, charSize[0],charSize[1]),
         ((width // 2) - (charSize[0] //2) + 50, (height // 1.35) - (charSize[1] // 2) + charSize[1] - 70+1,charSize[0],charSize[1]),
         ((width // 4) + (charSize[0] // 2) + 50+7, (height // 4 * 3) - charSize[1] - 5 - 80+3, charSize[0],charSize[1]),
         ((width // 4) + (charSize[0] // 2) + 50+5+2,(height // 2) - charSize[1] +2 -110+7, charSize[0], charSize[1])

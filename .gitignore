@@ -3,3 +3,9 @@ __pycache__/
 *$py.class
 .vscode
 tempCodeRunnerFile.pyde
+application.linux32
+application.linux64
+application.macosx
+application.windows32
+application.windows64
+bin

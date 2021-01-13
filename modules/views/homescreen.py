@@ -34,7 +34,7 @@ def Setup(characters):
         allowedPos = [1,2,4,5]        
                    
     coordinateIndexes = range(len((allowedPos)))
-    charColour = [(100,100,0),(124,50,124),(150,150,255),(75,170,170),(50,80,50),(200,100,200)]
+    charColour = ["#FFF452","#A2DCF2","#82C91E","#FF5751","#FF57D0","#FF6100"]
 
     #random.shuffle(coordinateIndexes)
     random.shuffle(characters)
@@ -49,11 +49,11 @@ def Setup(characters):
 
     mapImage = loadImage("../assets/images/Bord-4.png")
 
-def Show(font, buttonFont, battleCount) :
+def Show(font, buttonFont, iconFont, battleCount) :
     image(mapImage, 0,0, 800, 800 / 1.41)
 
     ShowStartingPos()
-    ShowEndPos()
+    ShowEndPos(iconFont)
     return True
 
 def ShowStartingPos():
@@ -61,31 +61,33 @@ def ShowStartingPos():
     for i in range(len(CharacterImages)):
         image(CharacterImages[i][0],CharacterCoordinates[CharacterImages[i][1]][0],CharacterCoordinates[CharacterImages[i][1]][1],CharacterCoordinates[CharacterImages[i][1]][2],CharacterCoordinates[CharacterImages[i][1]][3])
 
-def ShowEndPos():
+def ShowEndPos(iconFont):
     
-    colorMode(RGB)
+    #colorMode(RGB)
     for i in range(len(CharacterImages)):
-        textSize(32)	
         
-        fill(CharacterImages[i][2][0],CharacterImages[i][2][1],CharacterImages[i][2][2])
-        if len(CharacterImages) == 4:  
+        
+        fill(CharacterImages[i][2])
+        textFont(iconFont)
+        textSize(32)	
+        if len(CharacterImages) == 4:
             if i + 3 + EndPosShift < 4:
-                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)
+                text(u"\uf024",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+75)
             if i + 3 + EndPosShift >= 4:
-                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+60)        
+                text(u"\uf024",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+75)        
         
         elif len(CharacterImages) == 5:
             #text("temp",CharacterCoordinates[CharacterImages[i][1]][0]+50,CharacterCoordinates[CharacterImages[i][1]][1]+50) test to see if offset actually works, if battles = 0, difference between temp and shift should be 3(straight across the middle)
             if i + 3 + EndPosShift < 5:
-                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)
+                text(u"\uf024",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+75)
             if i + 3 + EndPosShift >= 5:
-                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+60)
+                text(u"\uf024",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+75)
         else:
             if i + 3 + EndPosShift < 6:
-                text("temp",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+60)
+                text(u"\uf024",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+75)
             if i + 3 + EndPosShift >= 6:
-                text("temp",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+60) 
+                text(u"\uf024",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+75) 
 
-        fill(255)           
+        #fill(255)           
 
 

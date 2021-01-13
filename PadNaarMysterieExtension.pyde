@@ -10,7 +10,7 @@ IsShowingPlayerSelection = False
 IsShowingHomescreen = False
 MainFont = loadFont("./assets/fonts/Algerian-64.vlw")
 ButtonFont = loadFont("./assets/fonts/ArialMT-32.vlw")
-# Font = loadFont("./assets/fonts/AventineRegular-64.vlw")
+IconFont = loadFont("./assets/fonts/FontAwesome5Free-Solid-128.vlw")
 Sf1 = SoundFile(this, "./assets/audio/piano.wav")
 Sf2 = SoundFile(this, "./assets/audio/hertz.wav")
 
@@ -31,7 +31,7 @@ def draw():
     global MouseScroll
 
     background(255)
-    viewsModel.Show(MainFont, ButtonFont, BackButton)          
+    viewsModel.Show(MainFont, ButtonFont, IconFont, BackButton)          
 
     # audio.MouseEffect([Sf1, Sf2])
     # audio.SetVolumeMouseScroll([Sf1, Sf2], MouseScroll)

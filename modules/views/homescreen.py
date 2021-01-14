@@ -20,30 +20,6 @@ CharacterImages = None
 CharacterCoordinates = None
 mapImage = None
 
-# if ShowButton(fonts["IconFont"], u"\uf02d", fonts["ButtonFont"], "Handleiding", 300, 50, 300) :
-#     # print(PdfViewerWindowScreen.IsVisable)
-
-# return not ShowButton(fonts["IconFont"], u"\uf441", fonts["ButtonFont"], "VECHT", 75, 50, 300)
-
-# def ShowButton(iconFont, icon, buttonFont, buttonText, bottomMargin, buttonHeight, buttonWidth) :
-#     fill(0)
-#     rectMode(CENTER)
-#     rect(width//2, height-bottomMargin, buttonWidth, buttonHeight)
-#     fill(255)
-#     textSize(32)
-#     textFont(buttonFont)
-#     text(buttonText, width//2, height-bottomMargin+10)
-#     fill(200)
-#     textFont(iconFont)
-#     text(icon, width//2, height-bottomMargin+10)
-
-#     if mousePressed and mouseButton == LEFT and \
-#         mouseX > width//2 - buttonWidth//2 and mouseX < width//2 + buttonWidth//2 and \
-#         mouseY > height-bottomMargin - buttonHeight//2 and mouseY < height-bottomMargin + buttonHeight//2:
-#         return True
-#     else :
-#         return False
-
 def Setup(characters):
     global mapImage, fullShot, CharacterImages, CharacterCoordinates, allowedPos, handleidingIcon, vechtIcon, Characters
     CharacterCoordinates = [
@@ -196,10 +172,6 @@ def ShowEndPos(iconFont):
     for i in range(len(CharacterImages)):
         fill(CharacterImages[i][2])
         textFont(iconFont)
-        textSize(32)	
-        print("endpos", EndPosShift)
-        print("hoi", i)
-        print(allowedPos)
-        print(CharacterCoordinates)
+        textSize(32)
         text(u"\uf024",CharacterCoordinates[(allowedPos[i]+ EndPosShift) % 6][0] -10,CharacterCoordinates[(allowedPos[i]+ EndPosShift) % 6][1]+65)
 

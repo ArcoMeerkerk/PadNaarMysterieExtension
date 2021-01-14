@@ -49,7 +49,6 @@ class PdfViewerWindow(PApplet):
             self.MouseReleased = False
 
     def SetWindowLocation(self, windowLocation) :
-        print(windowLocation)
         posx = windowLocation[0][0] + windowLocation[1][0] - self.width - 14
         posy = 5 + windowLocation[1][1]
         self.surface.setLocation(posx, posy)

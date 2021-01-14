@@ -94,7 +94,6 @@ def Show(amountOfPlayers):
                     color[5] = "#00FF00"
                     aantalKaraktersGekozen += 1
                     Karakters[5].IsGekozen = True
-            print(GekozenKarakters)
     # Reset Knop vakje en text
     fill('#C69C6D')   
     rectMode(CORNER)  
@@ -127,7 +126,6 @@ def Show(amountOfPlayers):
         text("Accepteer", 195, 525)
         if mousePressed:
             if (mouseX > 105 and mouseX < (105 + 188) and mouseY > 505 and mouseY < (505 + 42)):
-                print(GekozenKarakters)
                 return False
     
     return True

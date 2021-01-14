@@ -176,7 +176,6 @@ def Show(bellFont):
     if mousePressed:
         if (gekozen == True) and (mouseX > 300 and mouseX < (300 + 200) and mouseY > 548 and mouseY < (548 + 35)):
             GekozenKarakters[speler] = i
-            print(GekozenKarakters)
             speler = 1
             color = ["#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C", "#C0963C"] 
     

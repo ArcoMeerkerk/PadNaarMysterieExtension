@@ -9,7 +9,7 @@ score1 = 0
 score2 = 0
 gekozenKarakters = [6, 6]
 isErEenWinnaar = False
-scoreLimit = 2
+scoreLimit = 25
 victoryPlayer = 0
 frameCounter1 = 0
 frameCounter2 = 0
@@ -139,7 +139,6 @@ def Show(keyInfo, gekozenKarakters, soundFiles):
 
         if isErEenWinnaar:
             victoryPlayer = 1 if score1 >= scoreLimit else 2
-            print(victoryPlayer)
             IsFirst = False
             isErEenWinnaar = False
             sizeKarakter1 = 0

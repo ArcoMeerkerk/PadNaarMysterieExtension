@@ -1,4 +1,4 @@
-from modules.views import splashScreen, playerAmount, playerSelection, homescreen, event
+from modules.views import splashScreen, playerAmount, playerSelection, homescreen, event, dice
 from modules.vechtModules import karakterSelection, fight, fightResult
 
 class Screen:
@@ -34,7 +34,8 @@ def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellF
             homescreen.Setup(playerSelection.GekozenKarakters)
     elif HomeScreen.IsShowing :
         HomeScreen.Show(mainFont, buttonFont, mouseInfo, soundFiles, iconFont, bellFont, fight.fightCounter)
-        event.TimerForEvent(backButton, bellFont)
+        dice.Show()
+        event.TimerForEvent(backButton, bellFont, iconFont)
         if HomeScreen.IsShowing == False :
             KarakterSelection.IsShowing = True
     elif KarakterSelection.IsShowing :
@@ -53,4 +54,5 @@ def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellF
 def Setup() :
     playerSelection.Setup()
     karakterSelection.Setup()
+    dice.Setup()
     fight.Setup()

@@ -20,7 +20,7 @@ def LoadEvent():
     EventKeuze = random.choice(list(obj.values()))
     return str(EventKeuze)
 
-def Show(backButton, bellFont):
+def Show(backButton, bellFont, iconFont):
     global EventKeuze, LoadEventCheck, TimeTicker, EventTimer,TextEvent, ImageSizeX, ImageSizeY, ImagePlaceX, ImagePlaceY, TextSizeX, TextSizeY, TextPlaceX, TextPlaceY
     TimeTicker = False
     imageMode(CORNER)
@@ -44,7 +44,7 @@ def Show(backButton, bellFont):
             LoadEventCheck = True
             TimeTicker = True
 
-def TimerForEvent(backButton, bellFont):
+def TimerForEvent(backButton, bellFont, iconFont):
     global TimeTicker, randomEventTimer, EventEndTime, EventTimer, LoadEventCheck
     if EventTimer == 0 or EventTimer >= EventEndTime:
         EventTimer = 1
@@ -52,6 +52,6 @@ def TimerForEvent(backButton, bellFont):
     if EventTimer < EventEndTime and TimeTicker == True:
         EventTimer += 1
     if EventTimer >= randomEventTimer:
-        Show(backButton, bellFont)
+        Show(backButton, bellFont, iconFont)
     else:
         TimeTicker = True

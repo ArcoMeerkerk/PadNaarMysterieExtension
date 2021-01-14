@@ -10,9 +10,9 @@ randomEventTimer = 0
 TimeTicker = True
 TextEvent = ''
 LoadEventCheck = True
-ImagePlaceX, ImagePlaceY, ImageSizeX, ImageSizeY = 625, 75, 50, 50
-TextPlaceX, TextPlaceY, TextSizeX, TextSizeY = 400, 275, 500, 300
-BackgroundPlaceX, BackgroundPlaceY, BackgroundSizeX, BackgroundSizeY = 400, 250, 600, 400
+ImagePlaceX, ImagePlaceY, ImageSizeX, ImageSizeY = 625, 50, 50, 50
+TextPlaceX, TextPlaceY, TextSizeX, TextSizeY = 400, 100, 500, 300
+BackgroundPlaceX, BackgroundPlaceY, BackgroundSizeX, BackgroundSizeY = 400, 100, 540, 180
 
 def LoadEvent():
     global EventKeuze,LoadEventCheck, TextEvent
@@ -34,8 +34,13 @@ def Show(backButton, bellFont, iconFont):
     if LoadEventCheck == True:
         LoadEventCheck = False
         TextEvent = LoadEvent()
-    image(backButton, ImagePlaceX, ImagePlaceY, ImageSizeX, ImageSizeY)
-    fill('#C69C6D')
+        
+    textFont(iconFont)
+    textSize(50)
+    fill(37)
+    text(u"\uf057", ImagePlaceX, ImagePlaceY)
+    textFont(bellFont)
+    textSize(20)
     text(TextEvent, TextPlaceX, TextPlaceY, TextSizeX, TextSizeY)
 
     if mousePressed:

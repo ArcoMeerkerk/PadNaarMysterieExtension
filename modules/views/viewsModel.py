@@ -18,7 +18,7 @@ KarakterSelection = Screen(karakterSelection.Show, False)
 Fight = Screen(fight.Show, False)
 FightResult = Screen(fightResult.Show, False)
 
-def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellFont) :
+def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellFont, iconFont) :
     if SplashScreen.IsShowing :
         SplashScreen.Show(mainFont, buttonFont, bellFont)
         if SplashScreen.IsShowing == False :
@@ -31,8 +31,10 @@ def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellF
         PlayerSelection.Show(playerAmount.AmountofPlayers)
         if PlayerSelection.IsShowing == False:
             HomeScreen.IsShowing = True
+            print("Homescreen setup called")
+            homescreen.Setup(playerSelection.GekozenKarakters)
     elif HomeScreen.IsShowing :
-        HomeScreen.Show(mainFont, buttonFont, mouseInfo, soundFiles)
+        HomeScreen.Show(mainFont, buttonFont, mouseInfo, soundFiles, iconFont)
         event.TimerForEvent(backButton, bellFont)
         if HomeScreen.IsShowing == False :
             KarakterSelection.IsShowing = True

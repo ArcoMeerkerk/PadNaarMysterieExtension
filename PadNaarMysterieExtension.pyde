@@ -48,7 +48,7 @@ def setup():
 def draw():
     global KeyInfo, MouseInfo, MouseScroll, SoundFiles
     background(37)
-    viewsModel.Show(KeyInfo, MouseInfo, SoundFiles, MainFont, ButtonFont, BackButton, BellFont)          
+    viewsModel.Show(KeyInfo, MouseInfo, SoundFiles, MainFont, ButtonFont, BackButton, BellFont, Fonts["IconFont"])          
     audio.SetVolumeMouseScroll(SoundFiles.values(), MouseScroll)
     MouseScroll = 0
     KeyInfo["KeyReleased"] = False

@@ -15,8 +15,7 @@ BottomMargin = 75
 ButtonHeight = 50
 ButtonWidth = 300
 charSize = [50,50] # x & y ; width and height ro fullshots
-battles = 0 #should be Jue Jun's variable, not sure if his bit is working atm
-EndPosShift = battles % 6
+EndPosShift = 0
 CharacterImages = None
 CharacterCoordinates = None
 mapImage = None
@@ -46,7 +45,7 @@ mapImage = None
 #         return False
 
 def Setup(characters):
-    global mapImage, fullShot, CharacterImages, CharacterCoordinates, allowedPos
+    global mapImage, fullShot, CharacterImages, CharacterCoordinates, allowedPos, handleidingIcon, vechtIcon, Characters
     CharacterCoordinates = [
         ((width // 2) - (charSize[0] //2) + 50, (height // 4) - (charSize[1] // 2) + charSize[1] - 110+3,charSize[0],charSize[1]),
         ((width // 4 * 3) - charSize[0] - charSize[0] // 2  - charSize[0] // 10 + 50-1, (height // 2) - charSize[1] +2 -105+5, charSize[0], charSize[1]), # x positie hetzelfde als pos 3, y als pos 6
@@ -55,6 +54,7 @@ def Setup(characters):
         ((width // 4) + (charSize[0] // 2) + 50+7, (height // 4 * 3) - charSize[1] - 5 - 80+3, charSize[0],charSize[1]),
         ((width // 4) + (charSize[0] // 2) + 50+5+2,(height // 2) - charSize[1] +2 -110+7, charSize[0], charSize[1])
     ]
+    Characters = characters
     
     if len(characters) == 6:
         allowedPos = [0,1,2,3,4,5]
@@ -85,21 +85,27 @@ def Setup(characters):
         loadImage("./assets/images/tiles/Tile" + charColour[index][1] + ".png")
     ) for index,
         cursorImage in enumerate(characters)]
-    mapImage = loadImage("./assets/images/Bord-4.png")
+    mapImage = loadImage("./assets/images/Bord.png")
+    handleidingIcon = loadImage('./assets/images/icons/scroll.png')
+    vechtIcon = loadImage('./assets/images/icons/swords.png')
 
-
-def Show(font, buttonFont, mouseInfo, soundFiles, iconFont) :
-    global ChangeAudioFilesPressed1, ChangeAudioFilesPressed2, PdfViewerWindowScreen
+def Show(font, buttonFont, mouseInfo, soundFiles, iconFont, bellFont, fightCounter) :
+    global ChangeAudioFilesPressed1, ChangeAudioFilesPressed2, PdfViewerWindowScreen, BellFont, EndPosShift
+    BellFont = bellFont
+    EndPosShift = fightCounter % 6
     imageMode(CORNER)
+    image(mapImage, 0,0, 800, 800 / 1.41)
+    ShowStartingPos()
+    ShowEndPos(iconFont)
+
     SoundFiles = soundFiles
     ChangeAudioFiles(mouseInfo["MouseReleased"], soundFiles)
     ChangeAudioFilesPressed1 = ShowButton(buttonFont, mouseInfo["MouseReleased"], 0, 15, 15, align="LEFT")
     ChangeAudioFilesPressed2 = ShowButton(buttonFont, mouseInfo["MouseReleased"], 0, 15, 15, align="RIGHT")
-    
-    if ShowButton(buttonFont, mouseInfo["MouseReleased"], 75, 50, 300, "Handleiding") :
+    if ShowButton(buttonFont, mouseInfo["MouseReleased"], 15, 40, 200, "Handleiding", align="RIGHT", rightMargin=100) :
         if PdfViewerWindowScreen == None :
             PdfViewerWindowScreen = pdfViewer.PdfViewerWindow([loadImage(pageFile) for pageFile in glob.glob("./assets/pdf/handleiding/Page-*.png")],
-            font,
+            iconFont,
             loadImage("./assets/images/icons/document.png"),
             GetWindowLocation(this))
             SetScreenLocation(this)
@@ -107,23 +113,43 @@ def Show(font, buttonFont, mouseInfo, soundFiles, iconFont) :
             PdfViewerWindowScreen.getSurface().setVisible(True)
             PdfViewerWindowScreen.SetWindowLocation(SetScreenLocation(this))
 
-    image(mapImage, 0,0, 800, 800 / 1.41)
+    vechtKnop = not ShowButton(buttonFont, mouseInfo["MouseReleased"], 15, 40, 200, "Vecht", align="LEFT", leftMargin=100)
+    imageMode(CENTER)
+    image(handleidingIcon, 600, 530, 50, 50)
+    image(vechtIcon, 200, 530, 50, 50)
+    rectMode(CENTER)
+    rect(403, 47, 273, 41, 12)
+    textAlign(CENTER, CENTER)
+    fill('#C69C6D')
+    textFont(bellFont)
+    textSize(27)
+    text('Gevechten Teller: ' + str((fightCounter- 3) % 6), 400, 46)
+    return vechtKnop
 
-    ShowStartingPos()
-    ShowEndPos(iconFont)
-
-    return not ShowButton(buttonFont, mouseInfo["MouseReleased"], 75, 50, 300, "VECHT")
-
-def ShowButton(buttonFont, mouseReleased, bottomMargin, buttonHeight, buttonWidth,  buttonText = "", align="CENTER") :
+def ShowButton(buttonFont, mouseReleased, bottomMargin, buttonHeight, buttonWidth,  buttonText = "", align="CENTER", rightMargin=0, leftMargin=0) :
     global Timer
     if buttonText != "" :
         fill('#C69C6D')
-        rectMode(CENTER)
-        rect(width//2, height-bottomMargin, buttonWidth, buttonHeight)
-        textFont(buttonFont)
+        if align == "CENTER" :
+            rectMode(CENTER)
+            rect(width//2, height-bottomMargin, buttonWidth, buttonHeight, 12)
+        if align == "LEFT" :
+            rectMode(CORNER)
+            rect(leftMargin, height - bottomMargin - buttonHeight, buttonWidth, buttonHeight, 12)
+        if align == "RIGHT" :
+            rectMode(CORNER)
+            rect(width - rightMargin - buttonWidth, height-bottomMargin - buttonHeight, buttonWidth, buttonHeight, 12)
+        textFont(BellFont)
         fill(255)
-        textSize(32)
-        text(buttonText, width//2, height-bottomMargin+10)
+        textSize(27)
+        textAlign(CENTER, CENTER)
+        if align == "CENTER" :
+            text(buttonText, width//2, height-bottomMargin+10)
+        if align == "LEFT" :
+            text(buttonText, leftMargin + buttonWidth // 2, height-bottomMargin - buttonHeight // 2)
+        if align == "RIGHT" :
+            text(buttonText, width - rightMargin - buttonWidth // 2,  height-bottomMargin - buttonHeight // 2)
+        
     Timer += 1
     if align == "CENTER" :
         if mousePressed and mouseButton == LEFT and Timer > 30 and \
@@ -134,14 +160,14 @@ def ShowButton(buttonFont, mouseReleased, bottomMargin, buttonHeight, buttonWidt
             return False
     elif align == "LEFT" :
         if mousePressed and mouseButton == LEFT and Timer > 30 and \
-            mouseX > 0 and mouseX < buttonWidth and \
+            mouseX > leftMargin and mouseX < buttonWidth + leftMargin and \
             mouseY > height-bottomMargin - buttonHeight//2 and mouseY < height-bottomMargin + buttonHeight//2:
             return True
         else :
             return False
     elif align == "RIGHT" :
         if mousePressed and mouseButton == LEFT and Timer > 30 and\
-            mouseX > width - buttonWidth and mouseX < width and \
+            mouseX > width - rightMargin - buttonWidth and mouseX < width - rightMargin and \
             mouseY > height-bottomMargin - buttonHeight//2 and mouseY < height-bottomMargin + buttonHeight//2:
             return True
         else :
@@ -171,19 +197,9 @@ def ShowEndPos(iconFont):
         fill(CharacterImages[i][2])
         textFont(iconFont)
         textSize(32)	
-        if len(CharacterImages) == 4:
-            if i + 3 + EndPosShift < 4:
-                text(u"\uf024",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+75)
-            if i + 3 + EndPosShift >= 4:
-                text(u"\uf024",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+75)        
-        
-        elif len(CharacterImages) == 5:
-            if i + 3 + EndPosShift < 5:
-                text(u"\uf024",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+75)
-            if i + 3 + EndPosShift >= 5:
-                text(u"\uf024",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+75)
-        else:
-            if i + 3 + EndPosShift < 6:
-                text(u"\uf024",CharacterCoordinates[allowedPos[i]+3+EndPosShift][0],CharacterCoordinates[allowedPos[i]+3+EndPosShift][1]+75)
-            if i + 3 + EndPosShift >= 6:
-                text(u"\uf024",CharacterCoordinates[allowedPos[i]-3+EndPosShift][0],CharacterCoordinates[allowedPos[i]-3+EndPosShift][1]+75) 
+        print("endpos", EndPosShift)
+        print("hoi", i)
+        print(allowedPos)
+        print(CharacterCoordinates)
+        text(u"\uf024",CharacterCoordinates[(allowedPos[i]+ EndPosShift) % 6][0] -10,CharacterCoordinates[(allowedPos[i]+ EndPosShift) % 6][1]+65)
+

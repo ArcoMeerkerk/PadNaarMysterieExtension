@@ -31,10 +31,9 @@ def Show(keyInfo, mouseInfo, soundFiles, mainFont, buttonFont, backButton, bellF
         PlayerSelection.Show(playerAmount.AmountofPlayers)
         if PlayerSelection.IsShowing == False:
             HomeScreen.IsShowing = True
-            print("Homescreen setup called")
             homescreen.Setup(playerSelection.GekozenKarakters)
     elif HomeScreen.IsShowing :
-        HomeScreen.Show(mainFont, buttonFont, mouseInfo, soundFiles, iconFont)
+        HomeScreen.Show(mainFont, buttonFont, mouseInfo, soundFiles, iconFont, bellFont, fight.fightCounter)
         event.TimerForEvent(backButton, bellFont)
         if HomeScreen.IsShowing == False :
             KarakterSelection.IsShowing = True

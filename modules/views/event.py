@@ -28,6 +28,7 @@ def Show(backButton, bellFont):
     textFont(bellFont)
     textSize(28)
     noStroke()
+    rectMode(CENTER)
     fill(250, 235)
     rect(BackgroundPlaceX, BackgroundPlaceY, BackgroundSizeX, BackgroundSizeY, 12)
     if LoadEventCheck == True:

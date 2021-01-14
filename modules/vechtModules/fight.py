@@ -9,12 +9,14 @@ score1 = 0
 score2 = 0
 gekozenKarakters = [6, 6]
 isErEenWinnaar = False
-scoreLimit = 25
+scoreLimit = 2
 victoryPlayer = 0
 frameCounter1 = 0
 frameCounter2 = 0
 clicked1 = False
 clicked2 = False
+fightCounter = 3
+
 def Setup():
     global plaatjes, achtergrond, sparks
     achtergrond = loadImage("./assets/images/achtergrondElementen/vs_achtergrond.png")
@@ -36,7 +38,7 @@ def Setup():
 
 def Show(keyInfo, gekozenKarakters, soundFiles):
     global Data, isErEenWinnaar, score1, score2, IsFirst, sizeKarakter1, xKarakter1, yKarakter1, \
-    sizeKarakter1, xKarakter2, yKarakter2, sizeKarakter2, victoryPlayer, frameCounter1, frameCounter2 , clicked1, clicked2
+    sizeKarakter1, xKarakter2, yKarakter2, sizeKarakter2, victoryPlayer, frameCounter1, frameCounter2 , clicked1, clicked2, fightCounter
     Speler1 = gekozenKarakters[0]
     Speler2 = gekozenKarakters[1]
     handleKeypress(keyInfo, soundFiles)
@@ -147,6 +149,7 @@ def Show(keyInfo, gekozenKarakters, soundFiles):
             yKarakter2 = 0
             score1 = 0
             score2 = 0
+            fightCounter += 1
 
             return False
     return True
